@@ -1,0 +1,41 @@
+{
+  "name": "jb-checkbox",
+  "description": "checkbox web component",
+  "type": "module",
+  "author": {
+		"name": "mohammad javad bathaei",
+		"email": "javadbat@gmail.com"
+	},
+  "keywords": [
+    "jb",
+    "jb-checkbox",
+    "checkbox",
+    "tik",
+    "check",
+    "web component"
+  ],
+  "version": "0.0.1",
+  "bugs": "https://github.com/javadbat/jb-input/issues",
+  "license": "MIT",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "lib/",
+    "dist/",
+    "react/",
+    "react/dist/"
+  ],
+  "main": "index.js",
+  "types": "./dist/web-component/jb-checkbox/lib/jb-checkbox.d.ts",
+  "sideEffects": true,
+  "repository": {
+		"type": "git",
+		"url": "git@github.com:javadbat/jb-input.git"
+  },
+  "dependencies": {
+    "jb-validation": ">=0.2.0"
+  },
+  "devDependencies": {
+    "jb-form":">=0.6.10"
+  }
+}

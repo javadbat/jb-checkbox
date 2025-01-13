@@ -1,0 +1,1 @@
+export {JBCheckbox} from './dist/JBCheckbox.js';

@@ -1,0 +1,32 @@
+{
+  "name": "jb-checkbox-react",
+  "description": "checkbox react component",
+  "type": "module",
+  "author": {
+		"name": "mohammad javad bathaei",
+		"email": "javadbat@gmail.com"
+	},
+  "keywords": [
+    "jb",
+    "jb-checkbox",
+    "checkbox",
+    "react"
+  ],
+  "version": "1.0.2",
+  "bugs": "https://github.com/javadbat/jb-checkbox-react/issues",
+  "license": "MIT",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "index.js",
+    "lib/",
+    "dist/"
+  ],
+  "main": "index.js",
+  "repository": {
+		"type": "git",
+		"url": "git@github.com:javadbat/jb-checkbox-react.git"
+  },
+  "dependencies": {
+  }
+}
