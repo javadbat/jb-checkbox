@@ -27,47 +27,54 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
       this.#value = value;
     }
     this.#updateDomForValueChange();
-    //comment for typescript problem
-    if (this.#internals && typeof this.#internals.setFormValue == "function") {
-      this.#internals.setFormValue(`${value}`);
+    if (this.#internals) {
+      if(value){
+        (this.#internals as any).states?.add("checked");
+      }else{
+        (this.#internals as any).states?.delete("checked");
+      }
+      if (typeof this.#internals.setFormValue == "function") {
+        this.#internals.setFormValue(`${value}`);
+      }
     }
+
   }
   #validation = new ValidationHelper({
-    clearValidationError:this.clearValidationError.bind(this),
-    getValue:() => (this.value),
+    clearValidationError: this.clearValidationError.bind(this),
+    getValue: () => (this.value),
     getValidations: this.#GetInsideValidationsCallback.bind(this),
-    getValueString: () =>(this.value ? 'true' : 'false'),
-    setValidationResult:this.#setValidationResult.bind(this),
-    showValidationError:this.showValidationError.bind(this)
+    getValueString: () => (this.value ? 'true' : 'false'),
+    setValidationResult: this.#setValidationResult.bind(this),
+    showValidationError: this.showValidationError.bind(this)
   })
-  get validation(){
+  get validation() {
     return this.#validation;
   }
-  get name(){
+  get name() {
     return this.getAttribute('name') || '';
   }
   initialValue = false;
-  get isDirty(): boolean{
+  get isDirty(): boolean {
     return this.#value !== this.initialValue;
   }
   #required = false;
-  set required(value:boolean){
+  set required(value: boolean) {
     this.#required = value;
-    this.#validation.checkValiditySync({showError:false});
+    this.#validation.checkValiditySync({ showError: false });
   }
   get required() {
     return this.#required;
   }
-  isAutoValidationDisabled= false;
-  get disabled(){
+  isAutoValidationDisabled = false;
+  get disabled() {
     return this.#disabled;
   }
-  set disabled(value:boolean){
+  set disabled(value: boolean) {
     this.#disabled = value;
-    if(value){
+    if (value) {
       //TODO: remove as any when typescript support
       (this.#internals as any).states?.add("disabled");
-    }else{
+    } else {
       (this.#internals as any).states?.delete("disabled");
     }
   }
@@ -105,7 +112,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
     shadowRoot.appendChild(element.content.cloneNode(true));
     this.elements = {
       componentWrapper: shadowRoot.querySelector('.jb-checkbox-web-component')!,
-      label: shadowRoot.querySelector('.label-wrapper')!,
+      label: shadowRoot.querySelector('.label-wrapper slot')!,
       svgWrapper: shadowRoot.querySelector('.svg-wrapper')!,
       svg: shadowRoot.querySelector('.check-box-svg')!,
     };
@@ -115,7 +122,6 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
     this.elements.componentWrapper.addEventListener('click', () => this.#onComponentClick());
   }
   initProp() {
-    this.#disabled = false;
     this.value = this.getAttribute('value') === "true" || false;
   }
   static get observedAttributes(): string[] {
@@ -135,9 +141,9 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
         break;
       case 'disabled':
         if (value == '' || value === "true") {
-          this.#disabled = true;
+          this.disabled = true;
         } else if (value == "false" || value == null || value == undefined) {
-          this.#disabled = false;
+          this.disabled = false;
         }
         break;
 
@@ -154,7 +160,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
     if (!isEventPrevented) {
       this.value = !this.#value;
       const DispatchedEvent = this.#dispatchOnChangeEvent();
-      if(DispatchedEvent.defaultPrevented){
+      if (DispatchedEvent.defaultPrevented) {
         this.value = !this.#value;
       }
     }
@@ -166,7 +172,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
     return prevented;
   }
   #dispatchOnChangeEvent() {
-    const event = new Event('change',{bubbles:true,cancelable:true,composed:true});
+    const event = new Event('change', { bubbles: true, cancelable: true, composed: true });
     this.dispatchEvent(event);
     return event;
   }
@@ -203,11 +209,11 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
       this.#internals.setValidity(states, message);
     }
   }
-  #GetInsideValidationsCallback():ValidationItem<ValidationValue>[]{
-    if(this.#required){
+  #GetInsideValidationsCallback(): ValidationItem<ValidationValue>[] {
+    if (this.#required) {
       return [{
-        validator:(value)=>value!==false,
-        message:"چک میبایست فعال شود"
+        validator: (value) => value !== false,
+        message: "چک میبایست فعال شود"
       }];
     }
     return [];
@@ -218,15 +224,15 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
   clearValidationError() {
     //TODO: implement it
   }
-  get validationMessage(){
+  get validationMessage() {
     return this.#internals.validationMessage;
   }
 
-  checkValidity(){
-    return this.#validation.checkValiditySync({showError:false}).isAllValid;
+  checkValidity() {
+    return this.#validation.checkValiditySync({ showError: false }).isAllValid;
   }
-  reportValidity(){
-    return this.#validation.checkValiditySync({showError:true}).isAllValid;
+  reportValidity() {
+    return this.#validation.checkValiditySync({ showError: true }).isAllValid;
   }
 }
 const myElementNotExists = !customElements.get('jb-checkbox');

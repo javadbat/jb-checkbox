@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState, useImperativeHandle, useCallback, } from 'react';
-import 'jb-switch';
+import React, { useEffect, useRef, useState, useImperativeHandle, useCallback, PropsWithChildren, } from 'react';
+import 'jb-checkbox';
 // eslint-disable-next-line no-duplicate-imports
 import { JBCheckboxWebComponent, ValidationValue } from 'jb-checkbox';
 import { useBindEvent } from '../../../../common/hooks/use-event.js';
@@ -21,7 +21,7 @@ declare global {
 export type JBCheckboxEventType<T> = T & {
   target: JBCheckboxWebComponent
 }
-export type JBCheckboxProps = {
+type JBCheckboxProps = {
   style?: string,
   name?: string,
   className?: string,
@@ -29,9 +29,10 @@ export type JBCheckboxProps = {
   value?: boolean | null | undefined,
   label?: string | null | undefined,
   validationList?: ValidationItem<ValidationValue>[] | null,
+  disabled?: boolean,
 }
-
-export const JBCheckbox = React.forwardRef((props: JBCheckboxProps, ref) => {
+export type Props = PropsWithChildren<JBCheckboxProps>;
+export const JBCheckbox = React.forwardRef((props: Props, ref) => {
   const element = useRef<JBCheckboxWebComponent>(null);
   const [refChangeCount, refChangeCountSetter] = useState(0);
   useImperativeHandle(
@@ -51,9 +52,9 @@ export const JBCheckbox = React.forwardRef((props: JBCheckboxProps, ref) => {
     }
   }, [props.onChange, props.value]);
 
-
   useBindEvent(element, 'before-change', onchange, true);
-  // useEvent(element.current, 'change', onchange, true);
+  useBindEvent(element, 'change', onchange, true);
+
   useEffect(() => {
     if (element.current && props.value !== null && props.value !== undefined) {
       element.current.value = props.value;
@@ -68,18 +69,26 @@ export const JBCheckbox = React.forwardRef((props: JBCheckboxProps, ref) => {
   useEffect(() => {
     if (element.current && typeof props.name == "string") {
       element.current.setAttribute("name", props.name);
-    }else if(element.current && props.name == null){
+    } else if (element.current && props.name == null) {
       element.current.removeAttribute("name");
     }
   }, [props.name]);
+
   useEffect(() => {
-    if (element.current && Array.isArray( props.validationList)) {
+    if (element.current) {
+      element.current.disabled = Boolean(props.disabled);
+    }
+  }, [element.current, props.disabled]);
+
+  useEffect(() => {
+    if (element.current && Array.isArray(props.validationList)) {
       element.current.validation.list = props.validationList;
     }
   }, [props.validationList]);
 
   return (
     <jb-checkbox class={props.className ? props.className : ""} label={props.label ? props.label : ''} ref={element}>
+      {props.children}
     </jb-checkbox>
   );
 });

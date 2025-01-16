@@ -14,7 +14,7 @@
     "check",
     "web component"
   ],
-  "version": "0.0.1",
+  "version": "0.1.0",
   "bugs": "https://github.com/javadbat/jb-input/issues",
   "license": "MIT",
   "files": [
@@ -30,7 +30,7 @@
   "sideEffects": true,
   "repository": {
 		"type": "git",
-		"url": "git@github.com:javadbat/jb-input.git"
+		"url": "git@github.com:javadbat/jb-checkbox.git"
   },
   "dependencies": {
     "jb-validation": ">=0.2.0"

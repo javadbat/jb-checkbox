@@ -1,1 +1,1 @@
-export {JBCheckbox} from './dist/JBCheckbox.js';
+export * from './dist/JBCheckbox.js';

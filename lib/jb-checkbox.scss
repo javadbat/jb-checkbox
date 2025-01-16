@@ -1,6 +1,19 @@
 
 $curve: cubic-bezier(0.650, 0.000, 0.450, 1.000);
-
+:host{
+    --label-color:var(--jb-checkbox-label-color, #535353);
+    --check-bg-color:var(--jb-checkbox-check-bg-color, #fff);
+    --check-mark-color:var(--jb-checkbox-check-mark-color, #fff);
+}
+:host(:state(checked)){
+    --label-color:var(--jb-checkbox-label-color, #2a2d30);
+    --check-bg-color:var(--jb-checkbox-check-bg-color-checked, #00dc55);
+    --check-mark-color:var(--jb-checkbox-check-mark-color-checked, #fff);
+}
+:host(:state(disabled)){
+    --check-bg-color:var(--jb-checkbox-check-bg-color-disabled, #d3d3d3);
+    // --check-bg-color:var(--jb-checkbox-check-bg-color-disabled, red);
+}
 .jb-checkbox-web-component{
     display: flex;
     flex-direction: row;
@@ -8,10 +21,10 @@ $curve: cubic-bezier(0.650, 0.000, 0.450, 1.000);
     align-items: center;
     justify-content: start;
     cursor: pointer;
-    .label{
+    .label-wrapper{
         display: inline-block;
         font-weight: 400;
-        color: #535353;
+        color: var(--label-color);
     }
     .svg-wrapper{
         width: 30px;
@@ -24,7 +37,6 @@ $curve: cubic-bezier(0.650, 0.000, 0.450, 1.000);
             
             &.--active{
                 .checkmark__cube{
-                    fill:#00dc55;
                     transition: all 0.3s ease-in-out;
                     rx:58;
                     ry:58;
@@ -36,14 +48,14 @@ $curve: cubic-bezier(0.650, 0.000, 0.450, 1.000);
                 }
             }
             .checkmark__cube{
-                fill: #fff;
+                fill: var(--check-bg-color);
                 transition: all 0.3s ease-in-out;
                 stroke: #808080;
                 stroke-width: 1px;
             }
             .checkmark__check{
                 stroke-width: 5;
-                stroke: #fff;
+                stroke: var(--check-mark-color);
                 transform-origin: 50% 50%;
                 stroke-dasharray: 48;
                 stroke-dashoffset: 48;
