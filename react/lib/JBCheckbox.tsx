@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState, useImperativeHandle, useCallback, P
 import 'jb-checkbox';
 // eslint-disable-next-line no-duplicate-imports
 import { JBCheckboxWebComponent, ValidationValue } from 'jb-checkbox';
-import { useBindEvent } from '../../../../common/hooks/use-event.js';
 import { type ValidationItem } from 'jb-validation';
+import { EventProps, useEvents } from './events-hook.js';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -18,20 +18,16 @@ declare global {
     }
   }
 }
-export type JBCheckboxEventType<T> = T & {
-  target: JBCheckboxWebComponent
-}
 type JBCheckboxProps = {
   style?: string,
   name?: string,
   className?: string,
-  onChange?: (e: JBCheckboxEventType<Event>) => void | null | undefined,
   value?: boolean | null | undefined,
   label?: string | null | undefined,
   validationList?: ValidationItem<ValidationValue>[] | null,
   disabled?: boolean,
 }
-export type Props = PropsWithChildren<JBCheckboxProps>;
+export type Props = EventProps & PropsWithChildren<JBCheckboxProps>;
 export const JBCheckbox = React.forwardRef((props: Props, ref) => {
   const element = useRef<JBCheckboxWebComponent>(null);
   const [refChangeCount, refChangeCountSetter] = useState(0);
@@ -43,17 +39,6 @@ export const JBCheckbox = React.forwardRef((props: Props, ref) => {
   useEffect(() => {
     refChangeCountSetter(refChangeCount + 1);
   }, [element.current]);
-  const onchange = useCallback((e: JBCheckboxEventType<Event>) => {
-    if (props.value !== undefined && props.value !== null) {
-      e.preventDefault();
-    }
-    if (typeof props.onChange == "function") {
-      props.onChange(e);
-    }
-  }, [props.onChange, props.value]);
-
-  useBindEvent(element, 'before-change', onchange, true);
-  useBindEvent(element, 'change', onchange, true);
 
   useEffect(() => {
     if (element.current && props.value !== null && props.value !== undefined) {
@@ -85,7 +70,7 @@ export const JBCheckbox = React.forwardRef((props: Props, ref) => {
       element.current.validation.list = props.validationList;
     }
   }, [props.validationList]);
-
+  useEvents(element,props);
   return (
     <jb-checkbox class={props.className ? props.className : ""} label={props.label ? props.label : ''} ref={element}>
       {props.children}
