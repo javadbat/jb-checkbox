@@ -20,6 +20,7 @@ export const reactComponentList: ReactComponentBuildConfig[] = [
     external: ["prop-types", "react", "jb-checkbox"],
     globals: {
       react: "React",
+      "jb-checkbox": "JBCheckbox",
       "prop-types": "PropTypes",
     },
     umdName:"JBCheckboxReact",
