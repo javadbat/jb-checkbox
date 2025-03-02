@@ -22,7 +22,7 @@
     "lib/",
     "dist/"
   ],
-  "types":"./dist/web-component/jb-checkbox/react/lib/JBCheckbox.d.ts",
+  "types":"./dist/JBCheckbox.d.ts",
   "main": "index.js",
   "repository": {
 		"type": "git",
