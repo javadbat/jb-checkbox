@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useImperativeHandle, useCallback, PropsWithChildren, } from 'react';
+import React, { useEffect, useRef, useState, useImperativeHandle, useCallback, PropsWithChildren, CSSProperties, } from 'react';
 import 'jb-checkbox';
 // eslint-disable-next-line no-duplicate-imports
 import { JBCheckboxWebComponent, ValidationValue } from 'jb-checkbox';
@@ -19,7 +19,7 @@ declare global {
   }
 }
 type JBCheckboxProps = {
-  style?: string,
+  style?: CSSProperties,
   name?: string,
   className?: string,
   value?: boolean | null | undefined,
