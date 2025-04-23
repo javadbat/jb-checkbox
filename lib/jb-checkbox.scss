@@ -1,19 +1,7 @@
+@use './variables.css';
 
 $curve: cubic-bezier(0.650, 0.000, 0.450, 1.000);
-:host{
-    --label-color:var(--jb-checkbox-label-color, #535353);
-    --check-bg-color:var(--jb-checkbox-check-bg-color, #fff);
-    --check-mark-color:var(--jb-checkbox-check-mark-color, #fff);
-}
-:host(:state(checked)){
-    --label-color:var(--jb-checkbox-label-color, #2a2d30);
-    --check-bg-color:var(--jb-checkbox-check-bg-color-checked, #00dc55);
-    --check-mark-color:var(--jb-checkbox-check-mark-color-checked, #fff);
-}
-:host(:state(disabled)){
-    --check-bg-color:var(--jb-checkbox-check-bg-color-disabled, #d3d3d3);
-    // --check-bg-color:var(--jb-checkbox-check-bg-color-disabled, red);
-}
+
 .jb-checkbox-web-component{
     display: flex;
     flex-direction: row;
@@ -50,7 +38,7 @@ $curve: cubic-bezier(0.650, 0.000, 0.450, 1.000);
             .checkmark__cube{
                 fill: var(--check-bg-color);
                 transition: all 0.3s ease-in-out;
-                stroke: #808080;
+                stroke: var(--check-border-color);
                 stroke-width: 1px;
             }
             .checkmark__check{

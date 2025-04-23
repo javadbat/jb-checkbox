@@ -4,7 +4,7 @@ import CSS from './jb-checkbox.scss';
 import { ValidationHelper, ValidationItem, ValidationResult, type WithValidation } from 'jb-validation';
 import { type JBFormInputStandards } from 'jb-form';
 import { ElementsObject, ValidationValue } from './types.js';
-
+import {defineColors} from 'jb-core/theme';
 export * from './types.js';
 
 export class JBCheckboxWebComponent extends HTMLElement implements WithValidation, JBFormInputStandards<boolean> {
@@ -106,6 +106,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
       mode: 'open',
       delegatesFocus: true,
     });
+    defineColors();
     const html = `<style>${CSS}</style>` + '\n' + renderHTML();
     const element = document.createElement('template');
     element.innerHTML = html;

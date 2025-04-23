@@ -1,0 +1,15 @@
+:host{
+  --label-color:var(--jb-checkbox-label-color, var(--jb-neutral-5));
+  --check-bg-color:var(--jb-checkbox-check-bg-color, var(--jb-white));
+  --check-border-color:var(--jb-checkbox-check-border-color, var(--jb-neutral-7));
+  --check-mark-color:var(--jb-checkbox-check-mark-color, var(--jb-text-contrast));
+}
+:host(:state(checked)){
+  --label-color:var(--jb-checkbox-label-color, var(--jb-text-primary));
+  --check-bg-color:var(--jb-checkbox-check-bg-color-checked, var(--jb-green));
+  --check-mark-color:var(--jb-checkbox-check-mark-color-checked, var(--jb-white));
+}
+:host(:state(disabled)){
+  --check-bg-color:var(--jb-checkbox-check-bg-color-disabled, var(--jb-neutral-9));
+  /* --check-bg-color:var(--jb-checkbox-check-bg-color-disabled, red); */
+}
