@@ -5,7 +5,7 @@ import JBCheckboxTest from './JBCheckboxTestPage';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<Props> = {
-  title: "Example/form elements/JBCheckbox",
+  title: "Components/form elements/JBCheckbox",
   component: JBCheckbox,
 };
 export default meta;
