@@ -19,11 +19,10 @@ export const reactComponentList: ReactComponentBuildConfig[] = [
     name: "jb-checkbox-react",
     path: "./react/lib/JBCheckbox.tsx",
     outputPath: "./react/dist/JBCheckbox.js",
-    external: ["prop-types", "react", "jb-checkbox","jb-core"],
+    external: [ "react", "jb-checkbox","jb-core"],
     globals: {
       react: "React",
       "jb-checkbox": "JBCheckbox",
-      "prop-types": "PropTypes",
       "jb-core": "JBCore",
       "jb-core/react": "JBCoreReact",
     },
