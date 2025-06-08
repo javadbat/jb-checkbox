@@ -72,10 +72,9 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
   set disabled(value: boolean) {
     this.#disabled = value;
     if (value) {
-      //TODO: remove as any when typescript support
-      (this.#internals as any).states?.add("disabled");
+      this.#internals.states?.add("disabled");
     } else {
-      (this.#internals as any).states?.delete("disabled");
+      this.#internals.states?.delete("disabled");
     }
   }
   constructor() {
