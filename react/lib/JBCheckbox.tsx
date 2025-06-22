@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect, useRef, useState, useImperativeHandle, useCallback, PropsWithChildren, CSSProperties, } from 'react';
 import 'jb-checkbox';
 // eslint-disable-next-line no-duplicate-imports
@@ -5,7 +6,7 @@ import { JBCheckboxWebComponent, ValidationValue } from 'jb-checkbox';
 import { type ValidationItem } from 'jb-validation';
 import { EventProps, useEvents } from './events-hook.js';
 
-declare global {
+declare module "react" {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace JSX {
     interface IntrinsicElements {
