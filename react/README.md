@@ -5,7 +5,7 @@ codepen demo: <https://codepen.io/javadbat/pen/GRrzJeP>
 in codeSandBox: [codeSandbox preview](https://3f63dj.csb.app/samples/jb-checkbox) for just see the demo and [codeSandbox editor](https://codesandbox.io/p/sandbox/jb-design-system-3f63dj?file=%2Fsrc%2Fsamples%2FJBCheckbox.tsx) if you want to see and play with code
 ## usage
 
-```terminal
+```sh
 npm i jb-checkbox
 ```
 

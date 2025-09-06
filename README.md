@@ -14,7 +14,7 @@ checkbox web-component with smooth animation
 
 ## usage
 
-```terminal
+```sh
 npm i jb-checkbox
 ```
 
