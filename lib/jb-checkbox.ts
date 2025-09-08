@@ -28,6 +28,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
     }
     this.#updateDomForValueChange();
     if (this.#internals) {
+      this.#internals.ariaSelected = value?"true":"false";
       if(value){
         (this.#internals as any).states?.add("checked");
       }else{
@@ -73,8 +74,10 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
     this.#disabled = value;
     if (value) {
       this.#internals.states?.add("disabled");
+      this.#internals.ariaDisabled = "true";
     } else {
       this.#internals.states?.delete("disabled");
+      this.#internals.ariaDisabled = "false";
     }
   }
   constructor() {
@@ -138,6 +141,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
         break;
       case 'label':
         this.elements.label.innerText = value;
+        this.#internals.ariaLabel = value;
         break;
       case 'disabled':
         if (value == '' || value === "true") {
