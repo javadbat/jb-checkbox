@@ -6,11 +6,12 @@ export const webComponentList: WebComponentBuildConfig[] = [
     path: "./lib/jb-checkbox.ts",
     outputPath: "./dist/jb-checkbox.js",
     umdName: "JBCheckbox",
-    external: ["jb-validation", "jb-form", "jb-core"],
+    external: ["jb-validation", "jb-form", "jb-core", "jb-core/theme"],
     globals: {
       "jb-validation": "JBValidation",
       "jb-form": "JBForm",
       "jb-core": "JBCore",
+      "jb-core/theme":"JBCoreTheme"
     },
   },
 ];

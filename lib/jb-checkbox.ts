@@ -1,5 +1,6 @@
 import { renderHTML } from './render';
-import CSS from './jb-checkbox.scss';
+import CSS from './jb-checkbox.css';
+import VariablesCSS from './variables.css';
 
 import { ValidationHelper, ValidationItem, ValidationResult, type WithValidation } from 'jb-validation';
 import { type JBFormInputStandards } from 'jb-form';
@@ -109,7 +110,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
       delegatesFocus: true,
     });
     registerDefaultVariables();
-    const html = `<style>${CSS}</style>` + '\n' + renderHTML();
+    const html = `<style>${CSS} ${VariablesCSS}</style>` + '\n' + renderHTML();
     const element = document.createElement('template');
     element.innerHTML = html;
     shadowRoot.appendChild(element.content.cloneNode(true));
