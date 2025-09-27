@@ -12,9 +12,10 @@
     "checkbox",
     "tik",
     "check",
-    "web component"
+    "web component",
+    "react component"
   ],
-  "version": "0.1.0",
+  "version": "1.0.0",
   "bugs": "https://github.com/javadbat/jb-input/issues",
   "license": "MIT",
   "files": [
@@ -33,9 +34,10 @@
 		"url": "git@github.com:javadbat/jb-checkbox.git"
   },
   "dependencies": {
-    "jb-validation": ">=0.2.0"
+    "jb-validation": ">=0.4.0",
+    "jb-core": ">=0.18.0"
   },
   "devDependencies": {
-    "jb-form":">=0.6.10"
+    "jb-form":">=0.7.1"
   }
 }

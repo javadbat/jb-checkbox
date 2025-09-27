@@ -1,8 +1,12 @@
 :host{
   --label-color:var(--jb-checkbox-label-color, var(--jb-neutral-5));
+  --message-color:var(--jb-checkbox-message-color, var(--jb-text-secondary));
   --check-bg-color:var(--jb-checkbox-check-bg-color, var(--jb-white));
   --check-border-color:var(--jb-checkbox-check-border-color, var(--jb-neutral-7));
   --check-mark-color:var(--jb-checkbox-check-mark-color, var(--jb-text-contrast));
+}
+:host(:state(invalid)){
+  --message-color:var(--jb-checkbox-message-error-color, var(--jb-red));
 }
 :host(:state(checked)){
   --label-color:var(--jb-checkbox-label-color, var(--jb-text-primary));

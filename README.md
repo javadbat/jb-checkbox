@@ -12,6 +12,14 @@ checkbox web-component with smooth animation
 
 ![demo](demo-gif.gif)
 
+## Demo
+
+- [storybook](https://javadbat.github.io/design-system/?path=/docs/components-form-elements-jbcheckbox)
+
+## using with JS frameworks
+
+to use this component in **react** see [`jb-checkbox/react`](https://github.com/javadbat/jb-checkbox/tree/main/react);
+
 ## usage
 
 ```sh
@@ -79,7 +87,7 @@ jb-checkbox:states(checked)::part(label){
   font-weight: 800;
 }
 ```
-we have `label`, `checkbox`, `check-bg`, `check-mark` as a supported part in our component. you can also combine them with `disabled`, `checked` states for different style in different states.
+we have `label`, `checkbox`, `check-bg`, `check-mark`, `message` as a supported part in our component. you can also combine them with `disabled`, `checked` states for different style in different states.
 
 2. using css variable
 
@@ -88,6 +96,7 @@ here is the list of available css variables that you can use for your component
 | css variable name                      | description                                      |
 | -------------                          | -------------                                    |
 | --jb-checkbox-label-color              | label color                                      |
+| --jb-checkbox-message-color            | message color                                    |
 | --jb-checkbox-check-bg-color           | checkbox background color                        |
 | --jb-checkbox-check-bg-color-checked   | checkbox background color when checked           |
 | --jb-checkbox-check-bg-color-disabled  | checkbox background color when disabled          |

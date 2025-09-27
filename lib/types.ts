@@ -5,7 +5,8 @@ export type ElementsObject = {
   componentWrapper:HTMLDivElement,
   svgWrapper:HTMLDivElement,
   svg:SVGAElement,
-  label:HTMLDivElement
+  label:HTMLDivElement,
+  message:HTMLDivElement
 }
 export type ValidationValue = boolean;
 export type JBCheckboxEventType<TEvent> = EventTypeWithTarget<TEvent,JBCheckboxWebComponent>;

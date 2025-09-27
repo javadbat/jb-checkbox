@@ -13,8 +13,21 @@ type Story = StoryObj<typeof JBCheckbox>;
 
 export const Normal: Story = {
   args: {
-    label: 'چک',
+    label: 'checkbox',
     onChange: (e) => { console.log('onChange', e.target.value);}
+  }
+};
+export const WithMessage: Story = {
+  args: {
+    label: 'Checkbox Label',
+    message: 'message of checkbox'
+  }
+};
+export const Required: Story = {
+  args: {
+    label: 'required checkbox',
+    message: 'please check and then uncheck the checkbox to see validation error',
+    required:true,
   }
 };
 
@@ -43,10 +56,15 @@ export const ChildrenLabel: Story = {
   }
 };
 
-
+export const WithError: Story = {
+  args: {
+    label: 'with error',
+    error: 'error message passed from props',
+  }
+};
 export const TestCheckbox: Story = {
   render:(args) => <JBCheckboxTest {...args}></JBCheckboxTest>,
   args: {
-    label: 'چک باکس',
+    label: 'check box',
   }
 }

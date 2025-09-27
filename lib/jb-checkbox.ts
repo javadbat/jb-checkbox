@@ -2,10 +2,12 @@ import { renderHTML } from './render';
 import CSS from './jb-checkbox.css';
 import VariablesCSS from './variables.css';
 
-import { ValidationHelper, ValidationItem, ValidationResult, type WithValidation } from 'jb-validation';
+import { ValidationHelper, ValidationItem, ValidationResult, type ShowValidationErrorParameters, type WithValidation } from 'jb-validation';
 import { type JBFormInputStandards } from 'jb-form';
 import { ElementsObject, ValidationValue } from './types.js';
-import {registerDefaultVariables} from 'jb-core/theme';
+import { registerDefaultVariables } from 'jb-core/theme';
+import { dictionary } from './i18n';
+import { i18n } from 'jb-core/i18n';
 export * from './types.js';
 
 export class JBCheckboxWebComponent extends HTMLElement implements WithValidation, JBFormInputStandards<boolean> {
@@ -29,10 +31,10 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
     }
     this.#updateDomForValueChange();
     if (this.#internals) {
-      this.#internals.ariaSelected = value?"true":"false";
-      if(value){
+      this.#internals.ariaSelected = value ? "true" : "false";
+      if (value) {
         (this.#internals as any).states?.add("checked");
-      }else{
+      } else {
         (this.#internals as any).states?.delete("checked");
       }
       if (typeof this.#internals.setFormValue == "function") {
@@ -42,12 +44,12 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
 
   }
   #validation = new ValidationHelper({
-    clearValidationError: this.clearValidationError.bind(this),
     getValue: () => (this.value),
-    getValidations: this.#GetInsideValidationsCallback.bind(this),
+    getValidations: this.#getInsideValidationsCallback.bind(this),
     getValueString: () => (this.value ? 'true' : 'false'),
     setValidationResult: this.#setValidationResult.bind(this),
-    showValidationError: this.showValidationError.bind(this)
+    showValidationError: this.showValidationError.bind(this),
+    clearValidationError: this.clearValidationError.bind(this),
   })
   get validation() {
     return this.#validation;
@@ -119,6 +121,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
       label: shadowRoot.querySelector('.label-wrapper slot')!,
       svgWrapper: shadowRoot.querySelector('.svg-wrapper')!,
       svg: shadowRoot.querySelector('.check-box-svg')!,
+      message: shadowRoot.querySelector('.message-box')!,
     };
     this.registerEventListener();
   }
@@ -129,7 +132,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
     this.value = this.getAttribute('value') === "true" || false;
   }
   static get observedAttributes(): string[] {
-    return ["label", 'value', 'name', 'disabled',];
+    return ["label", "message", 'value', 'name', 'disabled', 'required', 'error'];
   }
   attributeChangedCallback(name: string, oldValue: string, newValue: string): void {
     // do something when an attribute has changed
@@ -151,7 +154,13 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
           this.disabled = false;
         }
         break;
-
+      case 'required':
+        this.required = (value || value === '') && value !== 'false';
+        break;
+      case 'message':
+        this.elements.message.innerHTML = value;
+      case 'error':
+        this.reportValidity();
     }
 
   }
@@ -164,6 +173,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
     this.#ChangeEventPreservedValue = null;
     if (!isEventPrevented) {
       this.value = !this.#value;
+      this.#validation.checkValidity({ showError: true });
       const DispatchedEvent = this.#dispatchOnChangeEvent();
       if (DispatchedEvent.defaultPrevented) {
         this.value = !this.#value;
@@ -214,20 +224,37 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
       this.#internals.setValidity(states, message);
     }
   }
-  #GetInsideValidationsCallback(): ValidationItem<ValidationValue>[] {
+  #getInsideValidationsCallback(): ValidationItem<ValidationValue>[] {
+    const validationList:ValidationItem<ValidationValue>[] = []
+
     if (this.#required) {
-      return [{
+      const message:string = this.getAttribute("required").length>0?this.getAttribute("required"): dictionary.get(i18n, "requiredMessage")
+      validationList.push({
         validator: (value) => value !== false,
-        message: "چک میبایست فعال شود"
-      }];
+        message,
+        stateType:"valueMissing"
+    });
     }
-    return [];
+    if (this.getAttribute("error") !== null && this.getAttribute("error").trim().length > 0) {
+      validationList.push({
+        validator: undefined,
+        message: this.getAttribute("error"),
+        stateType: "customError"
+      });
+    }
+    return validationList;
   }
-  showValidationError(message: string) {
-    //TODO: implement it
+  showValidationError(error: ShowValidationErrorParameters) {
+    this.elements.message.innerHTML = error.message;
+    //invalid state is used for ui purpose
+    (this.#internals as any).states?.add("invalid");
+    this.#internals.ariaInvalid = "true"
   }
   clearValidationError() {
-    //TODO: implement it
+    const text = this.getAttribute("message") || "";
+    this.elements.message.innerHTML = text;
+    (this.#internals as any).states?.delete("invalid");
+    this.#internals.ariaInvalid = "false"
   }
   get validationMessage() {
     return this.#internals.validationMessage;
