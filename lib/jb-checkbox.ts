@@ -88,6 +88,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
     if (typeof this.attachInternals == "function") {
       //some browser don't support attachInternals
       this.#internals = this.attachInternals();
+      this.#internals.role = "checkbox";
     }
     this.initWebComponent();
   }
