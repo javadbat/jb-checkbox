@@ -2,9 +2,9 @@ import { renderHTML } from './render';
 import CSS from './jb-checkbox.css';
 import VariablesCSS from './variables.css';
 
-import { ValidationHelper, ValidationItem, ValidationResult, type ShowValidationErrorParameters, type WithValidation } from 'jb-validation';
-import { type JBFormInputStandards } from 'jb-form';
-import { ElementsObject, ValidationValue } from './types.js';
+import { ValidationHelper, type ValidationItem, type ValidationResult, type ShowValidationErrorParameters, type WithValidation } from 'jb-validation';
+import type { JBFormInputStandards } from 'jb-form';
+import type { ElementsObject, ValidationValue } from './types.js';
 import { registerDefaultVariables } from 'jb-core/theme';
 import { dictionary } from './i18n';
 import { i18n } from 'jb-core/i18n';
@@ -90,7 +90,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
       this.#internals = this.attachInternals();
       this.#internals.role = "checkbox";
     }
-    this.initWebComponent();
+    this.#initWebComponent();
   }
   connectedCallback(): void {
     // standard web component event that called when all of dom is bound
@@ -107,13 +107,13 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
     const event = new CustomEvent('init', { bubbles: true, composed: true });
     this.dispatchEvent(event);
   }
-  initWebComponent(): void {
+  #initWebComponent(): void {
     const shadowRoot = this.attachShadow({
       mode: 'open',
       delegatesFocus: true,
     });
     registerDefaultVariables();
-    const html = `<style>${CSS} ${VariablesCSS}</style>` + '\n' + renderHTML();
+    const html = `<style>${CSS} ${VariablesCSS}</style>\n${renderHTML()}`;
     const element = document.createElement('template');
     element.innerHTML = html;
     shadowRoot.appendChild(element.content.cloneNode(true));
@@ -135,7 +135,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
   static get observedAttributes(): string[] {
     return ["label", "message", 'value', 'name', 'disabled', 'required', 'error'];
   }
-  attributeChangedCallback(name: string, oldValue: string, newValue: string): void {
+  attributeChangedCallback(name: string, _oldValue: string, newValue: string): void {
     // do something when an attribute has changed
     this.onAttributeChange(name, newValue);
   }
@@ -160,6 +160,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
         break;
       case 'message':
         this.elements.message.innerHTML = value;
+        break;
       case 'error':
         this.reportValidity();
     }

@@ -17,6 +17,7 @@
   ],
   "version": "1.0.1",
   "bugs": "https://github.com/javadbat/jb-input/issues",
+  "homepage": "https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox",
   "license": "MIT",
   "files": [
     "LICENSE",
