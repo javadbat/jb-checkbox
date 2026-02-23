@@ -1,6 +1,6 @@
-import { JBCheckboxWebComponent, type ValidationValue } from "jb-checkbox";
-import { type ValidationItem } from "jb-validation";
-import { RefObject, useEffect } from "react";
+import type { JBCheckboxWebComponent, ValidationValue } from "jb-checkbox";
+import type { ValidationItem } from "jb-validation";
+import { type RefObject, useEffect } from "react";
 
 export type JBCheckboxAttributes = {
   name?: string,
@@ -20,17 +20,17 @@ export function useJBCheckboxAttribute(element: RefObject<JBCheckboxWebComponent
     } else {
       element?.current?.removeAttribute('name');
     }
-  }, [props.name]);
+  }, [props.name, element?.current]);
 
   useEffect(() => {
-    props.message ? element.current.setAttribute('message', props.message) : element.current.removeAttribute('message');
-  }, [props.message])
+    props.message ? element.current?.setAttribute('message', props.message) : element.current?.removeAttribute('message');
+  }, [props.message, element?.current])
 
   useEffect(() => {
-    if (element && element.current) {
+    if (element?.current) {
       element.current.validation.list = props.validationList || [];
     }
-  }, [props.validationList]);
+  }, [props.validationList, element]);
 
   useEffect(() => {
     if (typeof props.disabled == "boolean" && props.disabled) {
@@ -38,7 +38,7 @@ export function useJBCheckboxAttribute(element: RefObject<JBCheckboxWebComponent
     } else {
       element?.current?.removeAttribute('disabled');
     }
-  }, [props.disabled]);
+  }, [props.disabled, element?.current]);
 
   useEffect(() => {
     if (typeof props.required === "string") {
@@ -47,13 +47,13 @@ export function useJBCheckboxAttribute(element: RefObject<JBCheckboxWebComponent
     if (typeof props.required === "boolean") {
       props.required ? element?.current?.setAttribute('required', '') : element?.current?.removeAttribute('required');
     }
-  }, [props.required]);
+  }, [props.required, element?.current]);
 
   useEffect(() => {
     if (element.current && props.value !== null && props.value !== undefined) {
       element.current.value = props.value;
     }
-  }, [props.value]);
+  }, [props.value, element?.current]);
 
   useEffect(() => {
     if (props.error) {
@@ -61,5 +61,5 @@ export function useJBCheckboxAttribute(element: RefObject<JBCheckboxWebComponent
     } else {
       element?.current?.removeAttribute('error');
     }
-  }, [props.error]);
+  }, [props.error, element?.current]);
 }

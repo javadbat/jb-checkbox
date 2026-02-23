@@ -1,13 +1,31 @@
 'use client';
-import React, { useRef, useImperativeHandle, type PropsWithChildren, type CSSProperties, } from 'react';
+import React, { useRef, useImperativeHandle, type PropsWithChildren, type Ref, } from 'react';
 import 'jb-checkbox';
-// eslint-disable-next-line no-duplicate-imports
-import { JBCheckboxWebComponent } from 'jb-checkbox';
-import { EventProps, useEvents } from './events-hook.js';
+import type { JBCheckboxWebComponent } from 'jb-checkbox';
+import { type EventProps, useEvents } from './events-hook.js';
 import { useJBCheckboxAttribute, type JBCheckboxAttributes } from './attributes-hook.js';
+import type { JBElementStandardProps } from 'jb-core/react';
+
+export function JBCheckbox(props: Props) {
+  const { ref, disabled, error, message, name, required, validationList, value, children, onBeforeChange, onChange, ...otherProps } = props
+  const element = useRef<JBCheckboxWebComponent>(null);
+  useImperativeHandle(
+    ref,
+    () => (element ? element.current : undefined),
+    [element],
+  );
+  useJBCheckboxAttribute(element, { disabled, error, message, name, required, validationList, value });
+  useEvents(element, { onBeforeChange, onChange });
+  return (
+    <jb-checkbox ref={element} {...otherProps}>
+      {children}
+    </jb-checkbox>
+  );
+};
+
+JBCheckbox.displayName = "JBCheckbox";
 
 declare module "react" {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace JSX {
     interface IntrinsicElements {
       'jb-checkbox': JBSwitchType;
@@ -20,26 +38,7 @@ declare module "react" {
   }
 }
 type JBCheckboxProps = {
-  style?: CSSProperties,
   label?: string | null | undefined,
-  className?: string,
-
+  ref?: Ref<JBCheckboxWebComponent>
 }
-export type Props = EventProps & PropsWithChildren<JBCheckboxProps> & JBCheckboxAttributes;
-export const JBCheckbox = React.forwardRef((props: Props, ref) => {
-  const element = useRef<JBCheckboxWebComponent>(null);
-  useImperativeHandle(
-    ref,
-    () => (element ? element.current : undefined),
-    [element],
-  );
-  useJBCheckboxAttribute(element,props);
-  useEvents(element, props);
-  return (
-    <jb-checkbox class={props.className ? props.className : ""} label={props.label ? props.label : ''} ref={element} style={props.style}>
-      {props.children}
-    </jb-checkbox>
-  );
-});
-
-JBCheckbox.displayName = "JBSwitch";
+export type Props = EventProps & PropsWithChildren<JBCheckboxProps> & JBCheckboxAttributes & JBElementStandardProps<JBCheckboxWebComponent, keyof EventProps & JBCheckboxAttributes>
