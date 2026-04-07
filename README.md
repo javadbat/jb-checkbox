@@ -2,7 +2,8 @@
 
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/jb-checkbox)
 [![GitHub license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://raw.githubusercontent.com/javadbat/jb-checkbox/main/LICENSE)
-[![NPM Downloads](https://img.shields.io/npm/dw/jb-checkbox)](https://www.npmjs.com/package/jb-checkbox)
+[![NPM Version](https://img.shields.io/npm/v/jb-checkbox)](https://www.npmjs.com/package/jb-checkbox)
+![GitHub Created At](https://img.shields.io/github/created-at/javadbat/jb-checkbox)
 
 checkbox web-component with smooth animation
 

@@ -100,17 +100,19 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
 
   }
   callOnLoadEvent(): void {
-    const event = new CustomEvent('load', { bubbles: true, composed: true });
+    const event = new CustomEvent('load', { bubbles: true, composed: false });
     this.dispatchEvent(event);
   }
   callOnInitEvent(): void {
-    const event = new CustomEvent('init', { bubbles: true, composed: true });
+    const event = new CustomEvent('init', { bubbles: true, composed: false });
     this.dispatchEvent(event);
   }
   #initWebComponent(): void {
     const shadowRoot = this.attachShadow({
       mode: 'open',
       delegatesFocus: true,
+      serializable:true,
+      clonable:true,
     });
     registerDefaultVariables();
     const html = `<style>${CSS} ${VariablesCSS}</style>\n${renderHTML()}`;
