@@ -3,7 +3,7 @@ import CSS from './jb-checkbox.css';
 import VariablesCSS from './variables.css';
 
 import { ValidationHelper, type ValidationItem, type ValidationResult, type ShowValidationErrorParameters, type WithValidation } from 'jb-validation';
-import type { JBFormInputStandards } from 'jb-form';
+import type { JBFormInputStandards, JBFormWebComponent } from 'jb-form';
 import type { ElementsObject, ValidationValue } from './types.js';
 import { registerDefaultVariables } from 'jb-core/theme';
 import { dictionary } from './i18n';
@@ -76,11 +76,11 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
   set disabled(value: boolean) {
     this.#disabled = value;
     if (value) {
-      this.#internals.states?.add("disabled");
-      this.#internals.ariaDisabled = "true";
+      this.#internals?.states?.add("disabled");
+      this.#internals!.ariaDisabled = "true";
     } else {
-      this.#internals.states?.delete("disabled");
-      this.#internals.ariaDisabled = "false";
+      this.#internals?.states?.delete("disabled");
+      this.#internals!.ariaDisabled = "false";
     }
   }
   constructor() {
@@ -92,6 +92,13 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
     }
     this.#initWebComponent();
   }
+  get form(): HTMLFormElement | JBFormWebComponent | null {
+    throw new Error('Method not implemented.');
+  }
+  formAssociatedCallback?: ((form: HTMLFormElement | null) => void) | undefined;
+  formResetCallback?: (() => void) | undefined;
+  formDisabledCallback?: ((disabled: boolean) => void) | undefined;
+  formStateRestoreCallback?: ((state: string | File | FormData | null, mode: 'autocomplete' | 'restore') => void) | undefined;
   connectedCallback(): void {
     // standard web component event that called when all of dom is bound
     this.callOnLoadEvent();
@@ -148,7 +155,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
         break;
       case 'label':
         this.elements.label.innerText = value;
-        this.#internals.ariaLabel = value;
+        this.#internals!.ariaLabel = value;
         break;
       case 'disabled':
         if (value == '' || value === "true") {
@@ -158,7 +165,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
         }
         break;
       case 'required':
-        this.required = (value || value === '') && value !== 'false';
+        this.required = !!((value || value === '') && value !== 'false');
         break;
       case 'message':
         this.elements.message.innerHTML = value;
@@ -215,34 +222,34 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
 */
   #setValidationResult(result: ValidationResult<ValidationValue>) {
     if (result.isAllValid) {
-      this.#internals.setValidity({}, '');
+      this.#internals?.setValidity({}, '');
     } else {
       const states: ValidityStateFlags = {};
       let message = "";
       result.validationList.forEach((res) => {
         if (!res.isValid) {
           if (res.validation.stateType) { states[res.validation.stateType] = true; }
-          if (message == '') { message = res.message; }
+          if (message == '') { message = res.message??""; }
         }
       });
-      this.#internals.setValidity(states, message);
+      this.#internals?.setValidity(states, message);
     }
   }
   #getInsideValidationsCallback(): ValidationItem<ValidationValue>[] {
     const validationList:ValidationItem<ValidationValue>[] = []
 
     if (this.#required) {
-      const message:string = this.getAttribute("required").length>0?this.getAttribute("required"): dictionary.get(i18n, "requiredMessage")
+      const message:string = this.getAttribute("required")??"".length>0?this.getAttribute("required")!: dictionary.get(i18n, "requiredMessage")
       validationList.push({
         validator: (value) => value !== false,
         message,
         stateType:"valueMissing"
     });
     }
-    if (this.getAttribute("error") !== null && this.getAttribute("error").trim().length > 0) {
+    if (this.getAttribute("error") !== null && (this.getAttribute("error")??"").trim().length > 0) {
       validationList.push({
         validator: undefined,
-        message: this.getAttribute("error"),
+        message: this.getAttribute("error")??"",
         stateType: "customError"
       });
     }
@@ -251,17 +258,17 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
   showValidationError(error: ShowValidationErrorParameters) {
     this.elements.message.innerHTML = error.message;
     //invalid state is used for ui purpose
-    (this.#internals as any).states?.add("invalid");
-    this.#internals.ariaInvalid = "true"
+    this.#internals?.states?.add("invalid");
+    this.#internals!.ariaInvalid = "true"
   }
   clearValidationError() {
     const text = this.getAttribute("message") || "";
     this.elements.message.innerHTML = text;
     (this.#internals as any).states?.delete("invalid");
-    this.#internals.ariaInvalid = "false"
+    this.#internals!.ariaInvalid = "false"
   }
   get validationMessage() {
-    return this.#internals.validationMessage;
+    return this.#internals!.validationMessage;
   }
 
   checkValidity() {

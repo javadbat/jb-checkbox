@@ -50,6 +50,13 @@ for simple usage you can set validation to your input:
     
 ```
 unlike other `jb design system` web-components `jb-checkbox` dont have any native wat to show validation error to the user and will only validate and return result for you to take an action as you like.
+## Sizes
+you can adjust different sizes for check box by size prop.
+
+```jsx
+<JBCheckbox size="sm" />
+```
+size value are `xl, lg, md, sm, xs`.
 
 ## customize styles:
 

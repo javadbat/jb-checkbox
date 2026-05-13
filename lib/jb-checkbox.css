@@ -1,13 +1,14 @@
 :host {
     cursor: pointer;
 }
-:host(:state(disabled)){
+
+:host(:state(disabled)) {
     cursor: not-allowed;
 }
 
 .jb-checkbox-web-component {
     display: grid;
-    grid-template-columns: 2rem max-content;
+    grid-template-columns: var(--size) max-content;
     grid-template-rows: max-content max-content;
     grid-template-areas: "check label" "check message";
     justify-content: center;
@@ -21,6 +22,9 @@
         display: inline-block;
         font-weight: 400;
         color: var(--label-color);
+        text-box-trim: trim-both;
+        text-box-edge: ex alphabetic;
+        font-size: var(--label-font-size);
     }
 
     &:has(.message-box:empty) {
@@ -29,9 +33,11 @@
 
     .message-box {
         grid-area: message;
-        font-size: var(--jb-checkbox-message-font-size, 0.7rem);
+        font-size: var(--message-font-size);
         color: var(--message-color);
         display: var(--jb-checkbox-message-box-display, block);
+        text-box-trim: trim-both;
+        text-box-edge: cap alphabetic;
 
         &:empty {
             padding: 0;
@@ -40,13 +46,15 @@
     }
 
     .svg-wrapper {
-        width: 2rem;
-        height: 2rem;
+        width: var(--size);
+        height: var(--size);
         grid-area: check;
+        display: block;
 
         .check-box-svg {
             width: 100%;
             height: 100%;
+
             &.--active {
                 .checkmark__cube {
                     transition: all 0.3s ease-in-out;

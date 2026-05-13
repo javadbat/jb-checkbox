@@ -11,7 +11,7 @@ export type JBCheckboxAttributes = {
   disabled?: boolean,
   required?: boolean,
 }
-export function useJBCheckboxAttribute(element: RefObject<JBCheckboxWebComponent>, props: JBCheckboxAttributes) {
+export function useJBCheckboxAttribute(element: RefObject<JBCheckboxWebComponent|null>, props: JBCheckboxAttributes) {
 
 
   useEffect(() => {

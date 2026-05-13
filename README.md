@@ -76,7 +76,15 @@ for simple usage you can set validation to your input:
 ```
 unlike other `jb design system` web-components `jb-checkbox` dont have any native wat to show validation error to the user and will only validate and return result for you to take an action as you like.
 
-## customize styles:
+## Sizes
+you can adjust different sizes for check box by size attribute
+
+```html
+<jb-checkbox size="sm" />
+```
+size value are `xl, lg, md, sm, xs`. 
+
+## Customize Styles:
 
 you have 2 way to customize style,
 1. using `::part` selector
@@ -94,15 +102,16 @@ we have `label`, `checkbox`, `check-bg`, `check-mark`, `message` as a supported 
 
 here is the list of available css variables that you can use for your component
 
-| css variable name                      | description                                      |
-| -------------                          | -------------                                    |
-| --jb-checkbox-label-color              | label color                                      |
-| --jb-checkbox-message-color            | message color                                    |
-| --jb-checkbox-check-bg-color           | checkbox background color                        |
-| --jb-checkbox-check-bg-color-checked   | checkbox background color when checked           |
-| --jb-checkbox-check-bg-color-disabled  | checkbox background color when disabled          |
-| --jb-checkbox-check-mark-color         | check mark color                                 |
-| --jb-checkbox-check-mark-color-checked | check mark color when checked                    |
+| css variable name                      | description                                                        |
+| -------------                          | -------------                                                      |
+| --jb-check-box-size                    | width & height of checkbox add `-size` like `-sm` for custom sizes |
+| --jb-checkbox-label-color              | label color                                                        |
+| --jb-checkbox-message-color            | message color                                                      |
+| --jb-checkbox-check-bg-color           | checkbox background color                                          |
+| --jb-checkbox-check-bg-color-checked   | checkbox background color when checked                             |
+| --jb-checkbox-check-bg-color-disabled  | checkbox background color when disabled                            |
+| --jb-checkbox-check-mark-color         | check mark color                                                   |
+| --jb-checkbox-check-mark-color-checked | check mark color when checked                                      |
 
 ## Other Related Docs:
 

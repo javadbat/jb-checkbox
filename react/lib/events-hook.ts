@@ -6,7 +6,7 @@ export type EventProps = {
     onChange?: (e: JBCheckboxEventType<Event>) => void,
     onBeforeChange?: (e: JBCheckboxEventType<Event>) => void,
 }
-export function useEvents(element:RefObject<JBCheckboxWebComponent>,props:EventProps){
+export function useEvents(element:RefObject<JBCheckboxWebComponent|null>,props:EventProps){
   useEvent(element, 'before-change', props.onBeforeChange, true);
   useEvent(element, 'change', props.onChange, true);
 }

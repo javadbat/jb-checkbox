@@ -1,17 +1,18 @@
 {
-    "compilerOptions": {
-        "rootDir": "./lib",
-        "declarationDir": "./dist",
-    },
-    "include": [
-        "../global.d.ts",
-        "lib/**/*.ts",
-        "lib/**/*.js", "react/lib/attributes-hook.ts",
-    ],
-    "exclude": [
-        "node_modules",
-        "**/*.spec.ts",
-        "dist",
-    ],
-    "extends":"jb-core/configs/tsconfig-web-component.json"
+  "compilerOptions": {
+    "rootDir": "./lib",
+    "declarationDir": "./dist"
+  },
+  "include": [
+    "../global.d.ts",
+    "lib/**/*.ts",
+    "lib/**/*.js",
+    "react/lib/attributes-hook.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+    "dist"
+  ],
+  "extends": "jb-core/configs/tsconfig-web-component.json"
 }

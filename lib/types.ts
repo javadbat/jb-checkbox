@@ -10,3 +10,4 @@ export type ElementsObject = {
 }
 export type ValidationValue = boolean;
 export type JBCheckboxEventType<TEvent> = EventTypeWithTarget<TEvent,JBCheckboxWebComponent>;
+export type SizeVariants = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
