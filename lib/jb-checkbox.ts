@@ -33,15 +33,18 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
     if (this.#internals) {
       this.#internals.ariaSelected = value ? "true" : "false";
       if (value) {
-        (this.#internals as any).states?.add("checked");
+        this.#internals.states?.add("checked");
       } else {
-        (this.#internals as any).states?.delete("checked");
+        this.#internals.states?.delete("checked");
       }
       if (typeof this.#internals.setFormValue == "function") {
         this.#internals.setFormValue(`${value}`);
       }
     }
 
+  }
+  get checked() {
+    return this.value === true;
   }
   #validation = new ValidationHelper({
     getValue: () => (this.value),
@@ -115,23 +118,26 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
     this.dispatchEvent(event);
   }
   #initWebComponent(): void {
-    const shadowRoot = this.attachShadow({
-      mode: 'open',
-      delegatesFocus: true,
-      serializable:true,
-      clonable:true,
-    });
+    if (!this.shadowRoot) {
+      this.attachShadow({
+        mode: 'open',
+        delegatesFocus: true,
+        serializable: true,
+        clonable: true,
+      });
+    }
+
     registerDefaultVariables();
     const html = `<style>${CSS} ${VariablesCSS}</style>\n${renderHTML()}`;
     const element = document.createElement('template');
     element.innerHTML = html;
-    shadowRoot.appendChild(element.content.cloneNode(true));
+    this.shadowRoot!.appendChild(element.content.cloneNode(true));
     this.elements = {
-      componentWrapper: shadowRoot.querySelector('.jb-checkbox-web-component')!,
-      label: shadowRoot.querySelector('.label-wrapper slot')!,
-      svgWrapper: shadowRoot.querySelector('.svg-wrapper')!,
-      svg: shadowRoot.querySelector('.check-box-svg')!,
-      message: shadowRoot.querySelector('.message-box')!,
+      componentWrapper: this.shadowRoot!.querySelector('.jb-checkbox-web-component')!,
+      label: this.shadowRoot!.querySelector('.label-wrapper slot')!,
+      svgWrapper: this.shadowRoot!.querySelector('.svg-wrapper')!,
+      svg: this.shadowRoot!.querySelector('.check-box-svg')!,
+      message: this.shadowRoot!.querySelector('.message-box')!,
     };
     this.registerEventListener();
   }
@@ -229,27 +235,27 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
       result.validationList.forEach((res) => {
         if (!res.isValid) {
           if (res.validation.stateType) { states[res.validation.stateType] = true; }
-          if (message == '') { message = res.message??""; }
+          if (message == '') { message = res.message ?? ""; }
         }
       });
       this.#internals?.setValidity(states, message);
     }
   }
   #getInsideValidationsCallback(): ValidationItem<ValidationValue>[] {
-    const validationList:ValidationItem<ValidationValue>[] = []
+    const validationList: ValidationItem<ValidationValue>[] = []
 
     if (this.#required) {
-      const message:string = this.getAttribute("required")??"".length>0?this.getAttribute("required")!: dictionary.get(i18n, "requiredMessage")
+      const message: string = this.getAttribute("required") ?? "".length > 0 ? this.getAttribute("required")! : dictionary.get(i18n, "requiredMessage")
       validationList.push({
         validator: (value) => value !== false,
         message,
-        stateType:"valueMissing"
-    });
+        stateType: "valueMissing"
+      });
     }
-    if (this.getAttribute("error") !== null && (this.getAttribute("error")??"").trim().length > 0) {
+    if (this.getAttribute("error") !== null && (this.getAttribute("error") ?? "").trim().length > 0) {
       validationList.push({
         validator: undefined,
-        message: this.getAttribute("error")??"",
+        message: this.getAttribute("error") ?? "",
         stateType: "customError"
       });
     }

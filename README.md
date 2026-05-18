@@ -21,7 +21,7 @@ checkbox web-component with smooth animation
 
 to use this component in **react** see [`jb-checkbox/react`](https://github.com/javadbat/jb-checkbox/tree/main/react);
 
-## usage
+## Usage
 
 ```sh
 npm i jb-checkbox

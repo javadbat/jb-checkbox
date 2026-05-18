@@ -1,6 +1,6 @@
 export function renderHTML():string{
   return /* html */ `
-    <div class="jb-checkbox-web-component">
+    <div class="jb-checkbox-web-component" tabindex="0">
       <div class="svg-wrapper">
         <svg class="check-box-svg" viewBox="0 0 52 52" part="checkbox">
           <rect class="checkmark__cube" x="0" y="0" width="52" height="52" rx="5" ry="5" part="check-bg"/>
