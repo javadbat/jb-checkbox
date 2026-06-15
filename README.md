@@ -19,7 +19,7 @@ checkbox web-component with smooth animation
 
 ## using with JS frameworks
 
-to use this component in **react** see [`jb-checkbox/react`](https://github.com/javadbat/jb-checkbox/tree/main/react);
+- [<img src="https://img.shields.io/badge/React.js-jb--checkbox%2Freact-000.svg?logo=react&logoColor=%2361DAFB" height="30" />](https://github.com/javadbat/jb-checkbox/tree/main/react)
 
 ## Usage
 
