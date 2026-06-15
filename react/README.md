@@ -9,8 +9,7 @@ jb-checkbox React component wrapper
 
 codepen demo: <https://codepen.io/javadbat/pen/GRrzJeP>
 in codeSandBox: [codeSandbox preview](https://3f63dj.csb.app/samples/jb-checkbox) for just see the demo and [codeSandbox editor](https://codesandbox.io/p/sandbox/jb-design-system-3f63dj?file=%2Fsrc%2Fsamples%2FJBCheckbox.tsx) if you want to see and play with code
-## usage
-
+## Usage
 ```sh
 npm i jb-checkbox
 ```
@@ -55,7 +54,7 @@ for simple usage you can set validation to your input:
   <JBCheckbox validationList={validationList} ref={element}/>
     
 ```
-unlike other `jb design system` web-components `jb-checkbox` dont have any native wat to show validation error to the user and will only validate and return result for you to take an action as you like.
+unlike other `jb design system` web-components `jb-checkbox` don't have any native way to show validation error to the user and will only validate and return result for you to take an action as you like.
 ## Sizes
 you can adjust different sizes for check box by size prop.
 
@@ -68,8 +67,12 @@ size value are `xl, lg, md, sm, xs`.
 
 Read [`jb-checkbox`](https://github.com/javadbat/jb-checkbox/) document for styling doc.
 
-## Other Related Docs:
 
+## Shared Documentation
+
+For web-component behavior, events, slots, and CSS variables, see [`jb-checkbox`](https://github.com/javadbat/jb-checkbox).
+
+## Related Docs
 - see [jb-checkbox](https://github.com/javadbat/jb-checkbox/) if you want to use this component in react.
 
 - see [All JB Design system Component List](https://javadbat.github.io/design-system/) for more components.

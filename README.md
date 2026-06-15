@@ -17,11 +17,22 @@ checkbox web-component with smooth animation
 
 - [storybook](https://javadbat.github.io/design-system/?path=/docs/components-form-elements-jbcheckbox)
 
-## using with JS frameworks
-
+## Using With JS Frameworks
 - [<img src="https://img.shields.io/badge/React.js-jb--checkbox%2Freact-000.svg?logo=react&logoColor=%2361DAFB" height="30" />](https://github.com/javadbat/jb-checkbox/tree/main/react)
 
 ## Usage
+
+## Attributes/Properties
+
+| name | type | description |
+| --- | --- | --- |
+| `checked` | property/attribute | Checked state. |
+| `value` | property/attribute | Checkbox value. |
+| `label` | attribute | Checkbox label. |
+| `name` | attribute | Form field name. |
+| `disabled` | attribute | Disables the checkbox. |
+| `required` | attribute | Marks the checkbox as required for validation. |
+| `change` | event | Fired when the checked state changes. |
 
 ```sh
 npm i jb-checkbox
@@ -74,7 +85,7 @@ for simple usage you can set validation to your input:
   const result = checkBoxDom.checkValidity()
     
 ```
-unlike other `jb design system` web-components `jb-checkbox` dont have any native wat to show validation error to the user and will only validate and return result for you to take an action as you like.
+unlike other `jb design system` web-components `jb-checkbox` don't have any native way to show validation error to the user and will only validate and return result for you to take an action as you like.
 
 ## Sizes
 you can adjust different sizes for check box by size attribute
@@ -98,11 +109,11 @@ jb-checkbox:states(checked)::part(label){
 ```
 we have `label`, `checkbox`, `check-bg`, `check-mark`, `message` as a supported part in our component. you can also combine them with `disabled`, `checked` states for different style in different states.
 
-2. using css variable
+2. using CSS variable
 
-here is the list of available css variables that you can use for your component
+here is the list of available CSS variables that you can use for your component
 
-| css variable name                      | description                                                        |
+| CSS variable name                      | description                                                        |
 | -------------                          | -------------                                                      |
 | --jb-check-box-size                    | width & height of checkbox add `-size` like `-sm` for custom sizes |
 | --jb-checkbox-label-color              | label color                                                        |
@@ -112,9 +123,20 @@ here is the list of available css variables that you can use for your component
 | --jb-checkbox-check-bg-color-disabled  | checkbox background color when disabled                            |
 | --jb-checkbox-check-mark-color         | check mark color                                                   |
 | --jb-checkbox-check-mark-color-checked | check mark color when checked                                      |
+| --jb-check-box-size-lg | Customize size lg. |
+| --jb-check-box-size-sm | Customize size sm. |
+| --jb-check-box-size-xl | Customize size xl. |
+| --jb-check-box-size-xs | Customize size xs. |
+| --jb-checkbox-check-border-color | Customize check border color. |
+| --jb-checkbox-message-box-display | Customize message box display. |
+| --jb-checkbox-message-error-color | Customize message error color. |
+| --jb-checkbox-message-font-size | Customize message font size. |
+| --jb-checkbox-message-font-size-xs | Customize message font size for xs size. |
+| --jb-checkbox-message-font-size-sm | Customize message font size for sm size. |
+| --jb-checkbox-message-font-size-lg | Customize message font size for lg size. |
+| --jb-checkbox-message-font-size-xl | Customize message font size for xl size. |
 
-## Other Related Docs:
-
+## Related Docs
 - see [jb-checkbox/react](https://github.com/javadbat/jb-checkbox/tree/main/react) if you want to use this component in react.
 
 - see [All JB Design system Component List](https://javadbat.github.io/design-system/) for more components.

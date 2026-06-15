@@ -27,21 +27,21 @@
   --size:var(--jb-check-box-size-xs, 1rem);
   --label-font-size:0.5rem;
     /*0.7 - (0.0875 *2) */
-  --message-font-size: var(--jb-input-message-font-size-xs, 0.525rem);
+  --message-font-size: var(--jb-checkbox-message-font-size-xs, 0.525rem);
 }
 :host([size="sm"]){
   --size:var(--jb-check-box-size-sm, 1.5rem);
   --label-font-size:0.75rem;
-  --message-font-size: var(--jb-input-message-font-size-sm, 0.6125rem);
+  --message-font-size: var(--jb-checkbox-message-font-size-sm, 0.6125rem);
 }
 :host([size="lg"]){
   --size:var(--jb-check-box-size-lg, 2.5rem);
   --label-font-size:1.25rem;
     /*0.7 + 0.0875*/
-  --message-font-size: var(--jb-input-message-font-size-lg, 0.7875rem);
+  --message-font-size: var(--jb-checkbox-message-font-size-lg, 0.7875rem);
 }
 :host([size="xl"]){
   --size: var(--jb-check-box-size-xl, 3rem);
   --label-font-size:1.5rem;
-    --message-font-size: var(--jb-input-message-font-size-xl, 0.875rem);
+    --message-font-size: var(--jb-checkbox-message-font-size-xl, 0.875rem);
 }
