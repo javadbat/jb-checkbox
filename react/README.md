@@ -1,4 +1,10 @@
 # jb-checkbox React component
+
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/jb-checkbox)
+[![GitHub license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://raw.githubusercontent.com/javadbat/jb-checkbox/main/LICENSE)
+[![NPM Version](https://img.shields.io/npm/v/jb-checkbox-react)](https://www.npmjs.com/package/jb-checkbox-react)
+![GitHub Created At](https://img.shields.io/github/created-at/javadbat/jb-checkbox)
+
 jb-checkbox React component wrapper
 
 codepen demo: <https://codepen.io/javadbat/pen/GRrzJeP>
@@ -69,5 +75,3 @@ Read [`jb-checkbox`](https://github.com/javadbat/jb-checkbox/) document for styl
 - see [All JB Design system Component List](https://javadbat.github.io/design-system/) for more components.
 
 - use [Contribution Guide](https://github.com/javadbat/design-system/blob/main/docs/contribution-guide.md) if you want to contribute in this component.
-
-
