@@ -5,76 +5,146 @@
 [![NPM Version](https://img.shields.io/npm/v/jb-checkbox-react)](https://www.npmjs.com/package/jb-checkbox-react)
 ![GitHub Created At](https://img.shields.io/github/created-at/javadbat/jb-checkbox)
 
-jb-checkbox React component wrapper
+React wrapper for `jb-checkbox`, a form-associated checkbox web component with animated checkmark and validation support.
 
-codepen demo: <https://codepen.io/javadbat/pen/GRrzJeP>
-in codeSandBox: [codeSandbox preview](https://3f63dj.csb.app/samples/jb-checkbox) for just see the demo and [codeSandbox editor](https://codesandbox.io/p/sandbox/jb-design-system-3f63dj?file=%2Fsrc%2Fsamples%2FJBCheckbox.tsx) if you want to see and play with code
-## Usage
+## Demo
+
+- [Storybook](https://javadbat.github.io/design-system/?path=/docs/components-form-elements-jbcheckbox)
+- [CodeSandbox preview](https://3f63dj.csb.app/samples/jb-checkbox)
+- [CodeSandbox editor](https://codesandbox.io/p/sandbox/jb-design-system-3f63dj?file=%2Fsrc%2Fsamples%2FJBCheckbox.tsx)
+
+## Installation
+
 ```sh
 npm i jb-checkbox
 ```
 
 ```jsx
-import {JBCheckbox} from 'jb-checkbox/react';
- <JBCheckbox label="checkbox sample" />
-//  or if you want more customization:
- <JBCheckbox ><div slot="label">checkbox sample</div></JBCheckbox>
+import { JBCheckbox } from 'jb-checkbox/react';
+
+<JBCheckbox label="Accept terms" />;
 ```
-## get and set value
+
+Use custom label markup with the `label` slot:
 
 ```jsx
-const [value,setValue] = useState(false);
-<JBCheckbox value={value} onChange={(e)=>setValue(e.target.value)}/>
+<JBCheckbox>
+  <span slot="label">Accept terms</span>
+</JBCheckbox>
 ```
-## disable checkbox
+
+## When to use
+
+Use `JBCheckbox` for a single boolean option that needs JB Design System styling, validation, form association, disabled state, or custom label markup.
+
+## Props
+
+| prop | type | description |
+| --- | --- | --- |
+| `value` | `boolean` | Controlled checked value. |
+| `label` | `string \| null` | Text label. Use children with `slot="label"` for custom markup. |
+| `name` | `string` | Form field name. |
+| `message` | `string \| null` | Helper text shown below the label. |
+| `error` | `string \| null` | External validation error message. |
+| `validationList` | `ValidationItem<boolean>[] \| null` | Custom validation rules from `jb-validation`. |
+| `disabled` | `boolean` | Disables user toggling. |
+| `required` | `boolean` | Enables required validation. |
+| `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Visual size variant. |
+
+## Events
+
+| prop | event | description |
+| --- | --- | --- |
+| `onBeforeChange` | `before-change` | Cancelable event fired before toggling. During this event, `event.target.value` exposes the next value. |
+| `onChange` | `change` | Cancelable event fired after value changes. Prevent default to revert the toggle. |
+
+## Controlled value
 
 ```jsx
-<JBCheckbox disabled />
+const [value, setValue] = useState(false);
+
+<JBCheckbox
+  value={value}
+  label="Accept terms"
+  onChange={(event) => setValue(event.target.value)}
+/>;
 ```
 
-## validation
+## Disabled
 
-jb-checkbox implement  [jb-validation](https://github.com/javadbat/jb-validation) inside to handle validation. so for more information you can read [jb-validation](https://github.com/javadbat/jb-validation) documentation.  
-for simple usage you can set validation to your input:
-
-```js
-    const validationList = [
-        {
-            validator:(value)=>{
-              //value is boolean
-             return value == true;
-            },
-            message: 'you must check mark before continue'
-        }
-    ]
-    const element = useRef();
-    //return boolean of if all validation return true
-  const result = element.current?.checkValidity()
-
-  <JBCheckbox validationList={validationList} ref={element}/>
-    
+```jsx
+<JBCheckbox disabled label="Disabled checkbox" />
 ```
-unlike other `jb design system` web-components `jb-checkbox` don't have any native way to show validation error to the user and will only validate and return result for you to take an action as you like.
+
+Disabled checkboxes cannot be toggled and are removed from the internal tab order.
+
+## Validation
+
+```jsx
+const validationList = [
+  {
+    validator: (value) => value === true,
+    message: 'You must check this before continuing',
+  },
+];
+
+const checkboxRef = useRef(null);
+
+<JBCheckbox
+  ref={checkboxRef}
+  required
+  validationList={validationList}
+  label="Accept terms"
+/>;
+
+const isValid = checkboxRef.current?.reportValidity();
+```
+
 ## Sizes
-you can adjust different sizes for check box by size prop.
 
 ```jsx
-<JBCheckbox size="sm" />
+<JBCheckbox size="sm" label="Small checkbox" />
 ```
-size value are `xl, lg, md, sm, xs`.
 
-## customize styles:
+Supported size values are `xs`, `sm`, `md`, `lg`, and `xl`.
 
-Read [`jb-checkbox`](https://github.com/javadbat/jb-checkbox/) document for styling doc.
+## Custom style
 
+The React component uses the same CSS variables, CSS parts, and custom states as the web component.
+
+```css
+.terms-checkbox::part(label) {
+  font-weight: 600;
+}
+
+.terms-checkbox:state(checked)::part(label) {
+  color: var(--jb-text-primary);
+}
+
+.terms-checkbox {
+  --jb-checkbox-focus-ring-color: var(--jb-primary);
+}
+```
+
+```jsx
+<JBCheckbox className="terms-checkbox" label="Accept terms" />
+```
 
 ## Shared Documentation
 
-For web-component behavior, events, slots, and CSS variables, see [`jb-checkbox`](https://github.com/javadbat/jb-checkbox).
+For web-component behavior, events, slots, CSS variables, and the full API, see [`jb-checkbox`](https://github.com/javadbat/jb-checkbox).
 
 ## Related Docs
-- see [jb-checkbox](https://github.com/javadbat/jb-checkbox/) if you want to use this component in react.
 
-- see [All JB Design system Component List](https://javadbat.github.io/design-system/) for more components.
+- See [All JB Design System Component List](https://javadbat.github.io/design-system/) for more components.
+- Use [Contribution Guide](https://github.com/javadbat/design-system/blob/main/docs/contribution-guide.md) if you want to contribute to this component.
 
-- use [Contribution Guide](https://github.com/javadbat/design-system/blob/main/docs/contribution-guide.md) if you want to contribute in this component.
+## AI agent notes
+
+- Import `JBCheckbox` from `jb-checkbox/react`; the wrapper imports and registers the underlying `jb-checkbox` web component.
+- Use the boolean `value` prop for controlled state.
+- Read `event.target.value` in `onBeforeChange` for the next value and in `onChange` for the committed value.
+- Use `required`, `error`, and `validationList` for validation.
+- Use children with `slot="label"` for custom label markup.
+- Use `ref.current.checkValidity()` or `ref.current.reportValidity()` for imperative validation.
+- Use `ref.current.focus()` to focus the checkbox when it is not disabled.

@@ -15,7 +15,18 @@
     gap: 0 0.5rem;
     align-items: center;
     justify-content: start;
+    &:focus{
+        outline: none;
+    }
+    &:focus-visible {
+        outline: none;
 
+        .svg-wrapper {
+            outline: 2px solid var(--jb-checkbox-focus-ring-color, Highlight);
+            outline-offset: 2px;
+            border-radius: 5px;
+        }
+    }
 
     .label-wrapper {
         grid-area: label;

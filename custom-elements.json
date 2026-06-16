@@ -1,0 +1,373 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "README.md",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "lib/jb-checkbox.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Form-associated checkbox web component with animated checkmark, label slot, validation support, custom states, and CSS customization.",
+          "name": "JBCheckboxWebComponent",
+          "tagName": "jb-checkbox",
+          "customElement": true,
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "attributes": [
+            {
+              "name": "value",
+              "description": "Initial checked value attribute. Use value=\"true\" for checked markup; omit the attribute or use the boolean value property for false/programmatic updates.",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "label",
+              "description": "Text label. For custom markup, use slot=\"label\".",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "message",
+              "description": "Helper text shown below the label when no validation error is visible.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "name",
+              "description": "Form field name returned by the name property.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "disabled",
+              "description": "Disables user toggling and sets the disabled custom state.",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "required",
+              "description": "Enables required validation. A string value is used as the required validation message.",
+              "type": {
+                "text": "boolean | string"
+              }
+            },
+            {
+              "name": "error",
+              "description": "External validation error message used as a custom error.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "description": "Visual size variant.",
+              "type": {
+                "text": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
+              }
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "description": "Boolean checked value. The string form value is set to \"true\" or \"false\".",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "checked",
+              "description": "Alias-style readonly checked state derived from value.",
+              "type": {
+                "text": "boolean"
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "description": "Disables user toggling and updates disabled accessibility/custom state.",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "description": "Enables required validation.",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "validation",
+              "description": "jb-validation helper. Set validation.list for custom validation rules that receive the boolean value.",
+              "type": {
+                "text": "ValidationHelper<boolean>"
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "description": "Current name attribute value.",
+              "type": {
+                "text": "string"
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "initialValue",
+              "description": "Baseline value used by isDirty.",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "isDirty",
+              "description": "True when current value differs from initialValue.",
+              "type": {
+                "text": "boolean"
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "isAutoValidationDisabled",
+              "description": "Compatibility flag for form input standards. Current component does not use automatic validation suppression logic.",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "description": "Associated form from ElementInternals.",
+              "type": {
+                "text": "HTMLFormElement | JBFormWebComponent | null"
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "validationMessage",
+              "description": "Current native validation message from ElementInternals.",
+              "type": {
+                "text": "string"
+              },
+              "readonly": true
+            }
+          ],
+          "methods": [
+            {
+              "name": "checkValidity",
+              "description": "Runs validation without showing the error message.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "name": "reportValidity",
+              "description": "Runs validation and shows the first error message.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "name": "focus",
+              "description": "Focuses the checkbox control when it is not disabled.",
+              "parameters": [
+                {
+                  "name": "options",
+                  "type": {
+                    "text": "FocusOptions"
+                  },
+                  "optional": true
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "before-change",
+              "description": "Cancelable event dispatched before toggling. During this event, event.target.value exposes the next value."
+            },
+            {
+              "name": "change",
+              "description": "Cancelable event dispatched after value changes. Prevent default to revert the toggle."
+            },
+            {
+              "name": "load",
+              "description": "Dispatched from connectedCallback before initProp."
+            },
+            {
+              "name": "init",
+              "description": "Dispatched from connectedCallback after initProp."
+            }
+          ],
+          "slots": [
+            {
+              "name": "label",
+              "description": "Custom label content rendered next to the checkbox."
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "checkbox",
+              "description": "The checkbox SVG element."
+            },
+            {
+              "name": "check-bg",
+              "description": "The checkbox background rectangle."
+            },
+            {
+              "name": "check-mark",
+              "description": "The animated check mark path."
+            },
+            {
+              "name": "label",
+              "description": "The label slot."
+            },
+            {
+              "name": "message",
+              "description": "The helper or validation message."
+            }
+          ],
+          "cssStates": [
+            {
+              "name": "checked",
+              "description": "Applied when value is true."
+            },
+            {
+              "name": "disabled",
+              "description": "Applied when disabled is true."
+            },
+            {
+              "name": "invalid",
+              "description": "Applied while a validation error is visible."
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--jb-check-box-size",
+              "description": "Base checkbox size."
+            },
+            {
+              "name": "--jb-check-box-size-xs",
+              "description": "Checkbox size for size=\"xs\"."
+            },
+            {
+              "name": "--jb-check-box-size-sm",
+              "description": "Checkbox size for size=\"sm\"."
+            },
+            {
+              "name": "--jb-check-box-size-lg",
+              "description": "Checkbox size for size=\"lg\"."
+            },
+            {
+              "name": "--jb-check-box-size-xl",
+              "description": "Checkbox size for size=\"xl\"."
+            },
+            {
+              "name": "--jb-checkbox-label-color",
+              "description": "Label color."
+            },
+            {
+              "name": "--jb-checkbox-message-color",
+              "description": "Helper message color."
+            },
+            {
+              "name": "--jb-checkbox-message-error-color",
+              "description": "Validation message color."
+            },
+            {
+              "name": "--jb-checkbox-message-box-display",
+              "description": "Message box display value."
+            },
+            {
+              "name": "--jb-checkbox-message-font-size",
+              "description": "Base message font size."
+            },
+            {
+              "name": "--jb-checkbox-message-font-size-xs",
+              "description": "Message font size for size=\"xs\"."
+            },
+            {
+              "name": "--jb-checkbox-message-font-size-sm",
+              "description": "Message font size for size=\"sm\"."
+            },
+            {
+              "name": "--jb-checkbox-message-font-size-lg",
+              "description": "Message font size for size=\"lg\"."
+            },
+            {
+              "name": "--jb-checkbox-message-font-size-xl",
+              "description": "Message font size for size=\"xl\"."
+            },
+            {
+              "name": "--jb-checkbox-check-bg-color",
+              "description": "Checkbox background color."
+            },
+            {
+              "name": "--jb-checkbox-check-bg-color-checked",
+              "description": "Checkbox background color when checked."
+            },
+            {
+              "name": "--jb-checkbox-check-bg-color-disabled",
+              "description": "Checkbox background color when disabled."
+            },
+            {
+              "name": "--jb-checkbox-check-border-color",
+              "description": "Checkbox border color."
+            },
+            {
+              "name": "--jb-checkbox-check-mark-color",
+              "description": "Check mark color."
+            },
+            {
+              "name": "--jb-checkbox-check-mark-color-checked",
+              "description": "Check mark color when checked."
+            },
+            {
+              "name": "--jb-checkbox-focus-ring-color",
+              "description": "Focus outline color around the checkbox icon."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "JBCheckboxWebComponent",
+          "declaration": {
+            "name": "JBCheckboxWebComponent",
+            "module": "lib/jb-checkbox.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "jb-checkbox",
+          "declaration": {
+            "name": "JBCheckboxWebComponent",
+            "module": "lib/jb-checkbox.ts"
+          }
+        }
+      ]
+    }
+  ]
+}

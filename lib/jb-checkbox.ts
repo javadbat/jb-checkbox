@@ -31,7 +31,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
     }
     this.#updateDomForValueChange();
     if (this.#internals) {
-      this.#internals.ariaSelected = value ? "true" : "false";
+      this.#internals.ariaChecked = value ? "true" : "false";
       if (value) {
         this.#internals.states?.add("checked");
       } else {
@@ -85,6 +85,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
       this.#internals?.states?.delete("disabled");
       this.#internals!.ariaDisabled = "false";
     }
+    this.#syncFocusableState();
   }
   constructor() {
     super();
@@ -96,7 +97,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
     this.#initWebComponent();
   }
   get form(): HTMLFormElement | JBFormWebComponent | null {
-    throw new Error('Method not implemented.');
+    return this.#internals?.form??null;
   }
   formAssociatedCallback?: ((form: HTMLFormElement | null) => void) | undefined;
   formResetCallback?: (() => void) | undefined;
@@ -143,6 +144,8 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
   }
   registerEventListener(): void {
     this.elements.componentWrapper.addEventListener('click', () => this.#onComponentClick());
+    this.elements.componentWrapper.addEventListener('keydown', (event) => this.#onKeyDown(event));
+    this.elements.componentWrapper.addEventListener('keyup', (event) => this.#onKeyUp(event));
   }
   initProp() {
     this.value = this.getAttribute('value') === "true" || false;
@@ -197,6 +200,23 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
       }
     }
   }
+  #onKeyDown(event: KeyboardEvent): void {
+    if (this.#isSpaceKey(event)) {
+      event.preventDefault();
+    }
+  }
+  #onKeyUp(event: KeyboardEvent): void {
+    if (this.#disabled) {
+      return;
+    }
+    if (this.#isSpaceKey(event)) {
+      event.preventDefault();
+      this.#onComponentClick();
+    }
+  }
+  #isSpaceKey(event: KeyboardEvent): boolean {
+    return event.key === ' ' || event.key === 'Spacebar';
+  }
   #dispatchOnBeforeChangeEvent(): boolean {
     const event = new CustomEvent('before-change', { cancelable: true });
     this.dispatchEvent(event);
@@ -211,9 +231,14 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
   /**
    * @public
    */
-  //TODO: find a way to manage focus and keyboard control
-  focus() {
+  focus(options?: FocusOptions) {
     //public method
+    if (!this.#disabled) {
+      this.elements.componentWrapper.focus(options);
+    }
+  }
+  #syncFocusableState() {
+    this.elements.componentWrapper.tabIndex = this.#disabled ? -1 : 0;
   }
   #updateDomForValueChange() {
     if (this.value) {
