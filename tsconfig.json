@@ -4,10 +4,8 @@
     "declarationDir": "./dist"
   },
   "include": [
-    "../global.d.ts",
     "lib/**/*.ts",
-    "lib/**/*.js",
-    "react/lib/attributes-hook.ts"
+    "lib/**/*.js"
   ],
   "exclude": [
     "node_modules",

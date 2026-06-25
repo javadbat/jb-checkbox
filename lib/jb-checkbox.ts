@@ -231,7 +231,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
   /**
    * @public
    */
-  focus(options?: FocusOptions) {
+  #deSelctAllOptions(options?: FocusOptions) {
     //public method
     if (!this.#disabled) {
       this.elements.componentWrapper.focus(options);
