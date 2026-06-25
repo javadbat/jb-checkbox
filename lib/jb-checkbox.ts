@@ -231,7 +231,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
   /**
    * @public
    */
-  #deSelctAllOptions(options?: FocusOptions) {
+  focus(options?: FocusOptions) {
     //public method
     if (!this.#disabled) {
       this.elements.componentWrapper.focus(options);
@@ -295,7 +295,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
   clearValidationError() {
     const text = this.getAttribute("message") || "";
     this.elements.message.innerHTML = text;
-    (this.#internals as any).states?.delete("invalid");
+    this.#internals?.states?.delete("invalid");
     this.#internals!.ariaInvalid = "false"
   }
   get validationMessage() {
