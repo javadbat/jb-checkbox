@@ -1,0 +1,18 @@
+import {Meta, Title, Story, Controls, Stories, Source} from '@storybook/blocks';
+import * as CheckboxStories from './JBCheckbox.stories';
+
+<Meta of={CheckboxStories}/>
+
+<Title>JB Checkbox</Title>
+
+Checkbox component with label, message, validation, disabled state, and size variants.
+
+<Story of={CheckboxStories.SizeVariants}/>
+<Controls of={CheckboxStories.Normal}/>
+<Source of={CheckboxStories.SizeVariants}/>
+
+## Basic usage
+<Story of={CheckboxStories.Normal}/>
+
+## Other samples & variants
+<Stories/>
