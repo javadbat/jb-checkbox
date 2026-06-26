@@ -141,7 +141,7 @@ checkbox.validation.list = [
 const isValid = checkbox.reportValidity();
 ```
 
-### Required validation
+### Required Validation
 
 ```html
 <jb-checkbox required label="Accept terms"></jb-checkbox>
