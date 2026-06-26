@@ -1,14 +1,14 @@
 import React from 'react';
-import { JBCheckbox, Props } from 'jb-checkbox/react';
+import { JBCheckbox } from 'jb-checkbox/react';
 import JBCheckboxTest from './JBCheckboxTestPage';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<Props> = {
+const meta = {
   title: "Components/form elements/JBCheckbox",
   component: JBCheckbox,
-};
+} satisfies Meta<typeof JBCheckbox>;
 export default meta;
-type Story = StoryObj<typeof JBCheckbox>;
+type Story = StoryObj<typeof meta>;
 
 
 export const Normal: Story = {
