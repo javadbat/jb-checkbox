@@ -5,6 +5,7 @@ import type { JBCheckboxWebComponent, SizeVariants } from 'jb-checkbox';
 import { type EventProps, useEvents } from './events-hook.js';
 import { useJBCheckboxAttribute, type JBCheckboxAttributes } from './attributes-hook.js';
 import type { JBElementStandardProps } from 'jb-core/react';
+import './module-declaration.js';
 
 export function JBCheckbox(props: Props) {
   //otherProps contain size
@@ -27,18 +28,6 @@ export function JBCheckbox(props: Props) {
 
 JBCheckbox.displayName = "JBCheckbox";
 
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      'jb-checkbox': JBSwitchType;
-    }
-    interface JBSwitchType extends React.DetailedHTMLProps<React.HTMLAttributes<JBCheckboxWebComponent>, JBCheckboxWebComponent> {
-      class?: string,
-      name?: string,
-      label?: string | null,
-    }
-  }
-}
 type JBCheckboxProps = {
   label?: string | null,
   size?: SizeVariants,
