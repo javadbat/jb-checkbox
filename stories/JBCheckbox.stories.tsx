@@ -1,7 +1,8 @@
-import React from 'react';
 import { JBCheckbox } from 'jb-checkbox/react';
 import JBCheckboxTest from './JBCheckboxTestPage';
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, fn, userEvent, waitFor } from 'storybook/test';
+import type { JBCheckboxWebComponent } from '../dist/jb-checkbox';
 
 const meta = {
   title: "Components/form elements/JBCheckbox",
@@ -36,6 +37,26 @@ export const Disabled: Story = {
     label: 'disabled',
     disabled: true,
     onChange: (e) => { console.log('onChange', e.target.value); }
+  },
+  play: async ({ canvasElement }) => {
+    const checkbox = canvasElement.querySelector<JBCheckboxWebComponent>('jb-checkbox');
+    const wrapper = checkbox?.shadowRoot?.querySelector<HTMLElement>('.jb-checkbox-web-component');
+    const onChange = fn();
+
+    expect(checkbox).toBeTruthy();
+    expect(wrapper).toBeTruthy();
+
+    checkbox?.addEventListener('change', onChange);
+
+    await waitFor(() => {
+      expect(checkbox?.disabled).toBe(true);
+      expect(wrapper?.tabIndex).toBe(-1);
+    });
+
+    await userEvent.click(wrapper!);
+
+    expect(checkbox?.value).toBe(false);
+    expect(onChange).not.toHaveBeenCalled();
   }
 
 };
