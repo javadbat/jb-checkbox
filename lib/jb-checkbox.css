@@ -69,8 +69,8 @@
             &.--active {
                 .checkmark__cube {
                     transition: all 0.3s ease-in-out;
-                    rx: 58px;
-                    ry: 58px;
+                    rx: 3.625rem;
+                    ry: 3.625rem;
                     stroke: transparent;
 
                 }
