@@ -206,14 +206,14 @@ Set CSS variables in the parent scope of the component.
 
 | CSS variable name | description |
 | --- | --- |
-| `--jb-check-box-size` | Base checkbox size. |
-| `--jb-check-box-size-xs` | Checkbox size for `size="xs"`. |
-| `--jb-check-box-size-sm` | Checkbox size for `size="sm"`. |
-| `--jb-check-box-size-lg` | Checkbox size for `size="lg"`. |
-| `--jb-check-box-size-xl` | Checkbox size for `size="xl"`. |
+| `--jb-checkbox-size` | Base checkbox size. |
+| `--jb-checkbox-size-xs` | Checkbox size for `size="xs"`. |
+| `--jb-checkbox-size-sm` | Checkbox size for `size="sm"`. |
+| `--jb-checkbox-size-lg` | Checkbox size for `size="lg"`. |
+| `--jb-checkbox-size-xl` | Checkbox size for `size="xl"`. |
 | `--jb-checkbox-label-color` | Label color. |
 | `--jb-checkbox-message-color` | Helper message color. |
-| `--jb-checkbox-message-error-color` | Validation message color. |
+| `--jb-checkbox-message-color-error` | Validation message color. |
 | `--jb-checkbox-message-box-display` | Message box display value. |
 | `--jb-checkbox-message-font-size` | Base message font size. |
 | `--jb-checkbox-message-font-size-xs` | Message font size for `size="xs"`. |

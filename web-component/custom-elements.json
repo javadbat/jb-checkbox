@@ -264,23 +264,23 @@
           ],
           "cssProperties": [
             {
-              "name": "--jb-check-box-size",
+              "name": "--jb-checkbox-size",
               "description": "Base checkbox size."
             },
             {
-              "name": "--jb-check-box-size-xs",
+              "name": "--jb-checkbox-size-xs",
               "description": "Checkbox size for size=\"xs\"."
             },
             {
-              "name": "--jb-check-box-size-sm",
+              "name": "--jb-checkbox-size-sm",
               "description": "Checkbox size for size=\"sm\"."
             },
             {
-              "name": "--jb-check-box-size-lg",
+              "name": "--jb-checkbox-size-lg",
               "description": "Checkbox size for size=\"lg\"."
             },
             {
-              "name": "--jb-check-box-size-xl",
+              "name": "--jb-checkbox-size-xl",
               "description": "Checkbox size for size=\"xl\"."
             },
             {
@@ -292,7 +292,7 @@
               "description": "Helper message color."
             },
             {
-              "name": "--jb-checkbox-message-error-color",
+              "name": "--jb-checkbox-message-color-error",
               "description": "Validation message color."
             },
             {
