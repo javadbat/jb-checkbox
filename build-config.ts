@@ -3,8 +3,9 @@ import type { ReactComponentBuildConfig, WebComponentBuildConfig } from "../../t
 export const webComponentList: WebComponentBuildConfig[] = [
   {
     name: "jb-checkbox",
-    path: "./lib/jb-checkbox.ts",
-    outputPath: "./dist/jb-checkbox.js",
+    path: "./web-component/lib/jb-checkbox.ts",
+    outputPath: "./web-component/dist/jb-checkbox.js",
+    tsConfigPath: "./web-component/tsconfig.json",
     umdName: "JBCheckbox",
     external: ["jb-validation", "jb-form", "jb-core", "jb-core/theme","jb-core/i18n"],
     globals: {

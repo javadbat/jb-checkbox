@@ -1,1 +1,1 @@
-export * from './dist/jb-checkbox.js';
+export * from './web-component/dist/jb-checkbox.js';
