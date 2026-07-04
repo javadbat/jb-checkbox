@@ -1,0 +1,363 @@
+import { Meta, Source, Story, Title } from '@storybook/addon-docs/blocks';
+import * as StyleStories from './Styles.stories';
+import antDesignThemeCss from '../../../docs/styles/ant-design.css?raw';
+import auroraThemeCss from '../../../docs/styles/aurora.css?raw';
+import bootstrapThemeCss from '../../../docs/styles/bootstrap.css?raw';
+import candyThemeCss from '../../../docs/styles/candy.css?raw';
+import carbonThemeCss from '../../../docs/styles/carbon.css?raw';
+import cupertinoThemeCss from '../../../docs/styles/cupertino.css?raw';
+import fluentThemeCss from '../../../docs/styles/fluent.css?raw';
+import forestThemeCss from '../../../docs/styles/forest.css?raw';
+import materialThemeCss from '../../../docs/styles/material.css?raw';
+import porcelainThemeCss from '../../../docs/styles/porcelain.css?raw';
+import sunsetThemeCss from '../../../docs/styles/sunset.css?raw';
+import terminalThemeCss from '../../../docs/styles/terminal.css?raw';
+import antDesignCheckboxCss from './styles/style-ant-design.css?raw';
+import auroraCheckboxCss from './styles/style-aurora.css?raw';
+import bootstrapCheckboxCss from './styles/style-bootstrap.css?raw';
+import candyCheckboxCss from './styles/style-candy.css?raw';
+import carbonCheckboxCss from './styles/style-carbon.css?raw';
+import cupertinoCheckboxCss from './styles/style-cupertino.css?raw';
+import fluentCheckboxCss from './styles/style-fluent.css?raw';
+import forestCheckboxCss from './styles/style-forest.css?raw';
+import materialCheckboxCss from './styles/style-material.css?raw';
+import porcelainCheckboxCss from './styles/style-porcelain.css?raw';
+import sunsetCheckboxCss from './styles/style-sunset.css?raw';
+import terminalCheckboxCss from './styles/style-terminal.css?raw';
+
+<Meta title="Components/form elements/JBCheckbox/Styling" />
+
+<Title>Styling</Title>
+
+`JBCheckbox` styling is theme-driven. Use common design tokens for shared product language, component variables for the checkbox API, and CSS parts only for exposed surfaces that need more targeted styling.
+
+## Live Gallery
+
+<Story of={StyleStories.Gallery} />
+
+<Source of={StyleStories.Gallery} />
+
+## Common Design Tokens
+
+Use the core theme docs as the source of truth for shared design-system variables:
+
+- [Theme Colors](../../jb-core/theme/stories/colors.mdx) explains the general color palette variables, default colors, customization approaches, and color generation helpers.
+- [Theme Sizes](../../jb-core/theme/stories/sizes.mdx) explains shared size and radius variables.
+
+Checkbox recipes should use those common tokens where possible, then map them into `--jb-checkbox-*` variables only where the checkbox needs a component-specific value.
+
+## Styling Model
+
+Use three layers when styling checkbox examples:
+
+- Common design tokens are documented in [Theme Colors](../../jb-core/theme/stories/colors.mdx) and [Theme Sizes](../../jb-core/theme/stories/sizes.mdx).
+- Reusable example theme packs live in [`docs/styles`](https://github.com/javadbat/design-system/tree/main/docs/styles) and can be shared across components.
+- Component recipe files live in [`modules/jb-checkbox/stories/styles`](https://github.com/javadbat/design-system/tree/main/modules/jb-checkbox/stories/styles).
+- Public component variables use the `--jb-checkbox-*` prefix and are the stable styling API.
+
+Each example uses one shared example theme pack from [`docs/styles`](https://github.com/javadbat/design-system/tree/main/docs/styles) and one checkbox-specific recipe from [`modules/jb-checkbox/stories/styles`](https://github.com/javadbat/design-system/tree/main/modules/jb-checkbox/stories/styles). The style story applies both classes directly to `JBCheckbox`.
+
+## Recommended Customization Path
+
+1. Use `--jb-checkbox-*` variables first for component internals.
+2. Use host styles for layout context around groups of checkboxes.
+3. Use common theme variables from [Theme Colors](../../jb-core/theme/stories/colors.mdx) and [Theme Sizes](../../jb-core/theme/stories/sizes.mdx) when the style should align with the design system.
+4. Put reusable theme-pack values in [`docs/styles`](https://github.com/javadbat/design-system/tree/main/docs/styles) only when they should be shared by multiple component demos.
+5. Use `::part(...)` sparingly for official exposed surfaces such as `::part(check-bg)`, `::part(check-mark)`, `::part(label)`, and `::part(message)`.
+6. Add a new component variable only when a needed internal part cannot be customized with the current public variables or official parts.
+
+## Parts And States
+
+<table>
+  <thead>
+    <tr>
+      <th>Part</th>
+      <th>Element</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>checkbox</code></td>
+      <td>Checkbox SVG</td>
+      <td>Use for whole icon effects such as drop shadow or transforms.</td>
+    </tr>
+    <tr>
+      <td><code>check-bg</code></td>
+      <td>Checkbox background rectangle</td>
+      <td>Use for stroke, border emphasis, or state-specific icon background details.</td>
+    </tr>
+    <tr>
+      <td><code>check-mark</code></td>
+      <td>Animated check mark path</td>
+      <td>Use for targeted check mark styling beyond the public color variables.</td>
+    </tr>
+    <tr>
+      <td><code>label</code></td>
+      <td>Label slot</td>
+      <td>Targets both text labels and custom slotted label markup.</td>
+    </tr>
+    <tr>
+      <td><code>message</code></td>
+      <td>Helper or validation message</td>
+      <td>Use for helper text and validation message emphasis.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Custom State</th>
+      <th>Meaning</th>
+      <th>Example Selector</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>checked</code></td>
+      <td>Applied when <code>value</code> is true.</td>
+      <td><code>jb-checkbox:state(checked)::part(label)</code></td>
+    </tr>
+    <tr>
+      <td><code>disabled</code></td>
+      <td>Applied when the checkbox is disabled.</td>
+      <td><code>jb-checkbox:state(disabled)::part(label)</code></td>
+    </tr>
+    <tr>
+      <td><code>invalid</code></td>
+      <td>Applied while validation error text is visible.</td>
+      <td><code>jb-checkbox:state(invalid)::part(message)</code></td>
+    </tr>
+  </tbody>
+</table>
+
+## CSS Variables
+
+<table>
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Category</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><code>--jb-checkbox-size</code></td><td>Size</td><td>Base checkbox icon size.</td></tr>
+    <tr><td><code>--jb-checkbox-size-xs</code></td><td>Size</td><td>Icon size for <code>size="xs"</code>.</td></tr>
+    <tr><td><code>--jb-checkbox-size-sm</code></td><td>Size</td><td>Icon size for <code>size="sm"</code>.</td></tr>
+    <tr><td><code>--jb-checkbox-size-lg</code></td><td>Size</td><td>Icon size for <code>size="lg"</code>.</td></tr>
+    <tr><td><code>--jb-checkbox-size-xl</code></td><td>Size</td><td>Icon size for <code>size="xl"</code>.</td></tr>
+    <tr><td><code>--jb-checkbox-label-font-size</code></td><td>Size</td><td>Base label font size.</td></tr>
+    <tr><td><code>--jb-checkbox-label-font-size-xs</code></td><td>Size</td><td>Label font size for <code>size="xs"</code>.</td></tr>
+    <tr><td><code>--jb-checkbox-label-font-size-sm</code></td><td>Size</td><td>Label font size for <code>size="sm"</code>.</td></tr>
+    <tr><td><code>--jb-checkbox-label-font-size-lg</code></td><td>Size</td><td>Label font size for <code>size="lg"</code>.</td></tr>
+    <tr><td><code>--jb-checkbox-label-font-size-xl</code></td><td>Size</td><td>Label font size for <code>size="xl"</code>.</td></tr>
+    <tr><td><code>--jb-checkbox-message-font-size</code></td><td>Size</td><td>Base message font size.</td></tr>
+    <tr><td><code>--jb-checkbox-message-font-size-xs</code></td><td>Size</td><td>Message font size for <code>size="xs"</code>.</td></tr>
+    <tr><td><code>--jb-checkbox-message-font-size-sm</code></td><td>Size</td><td>Message font size for <code>size="sm"</code>.</td></tr>
+    <tr><td><code>--jb-checkbox-message-font-size-lg</code></td><td>Size</td><td>Message font size for <code>size="lg"</code>.</td></tr>
+    <tr><td><code>--jb-checkbox-message-font-size-xl</code></td><td>Size</td><td>Message font size for <code>size="xl"</code>.</td></tr>
+    <tr><td><code>--jb-checkbox-check-border-radius</code></td><td>Size</td><td>Checkbox icon radius before checked state.</td></tr>
+    <tr><td><code>--jb-checkbox-check-border-radius-checked</code></td><td>Size</td><td>Checkbox icon radius when checked.</td></tr>
+    <tr><td><code>--jb-checkbox-label-color</code></td><td>Theme/Color</td><td>Label color.</td></tr>
+    <tr><td><code>--jb-checkbox-message-color</code></td><td>Theme/Color</td><td>Helper message color.</td></tr>
+    <tr><td><code>--jb-checkbox-message-color-error</code></td><td>Theme/Color</td><td>Validation message color.</td></tr>
+    <tr><td><code>--jb-checkbox-check-bg-color</code></td><td>Theme/Color</td><td>Checkbox background color.</td></tr>
+    <tr><td><code>--jb-checkbox-check-bg-color-checked</code></td><td>Theme/Color</td><td>Checkbox background color when checked.</td></tr>
+    <tr><td><code>--jb-checkbox-check-bg-color-disabled</code></td><td>Theme/Color</td><td>Checkbox background color when disabled.</td></tr>
+    <tr><td><code>--jb-checkbox-check-border-color</code></td><td>Theme/Color</td><td>Checkbox border color.</td></tr>
+    <tr><td><code>--jb-checkbox-check-mark-color</code></td><td>Theme/Color</td><td>Check mark color before checked state.</td></tr>
+    <tr><td><code>--jb-checkbox-check-mark-color-checked</code></td><td>Theme/Color</td><td>Check mark color when checked.</td></tr>
+    <tr><td><code>--jb-checkbox-focus-ring-color</code></td><td>Theme/Color</td><td>Focus outline color around the checkbox icon.</td></tr>
+    <tr><td><code>--jb-checkbox-message-box-display</code></td><td>Other</td><td>Message box display value.</td></tr>
+  </tbody>
+</table>
+
+## Style Recipes
+
+### Carbon
+
+<Story of={StyleStories.Carbon} />
+
+<Source of={StyleStories.Carbon} />
+
+Shared style:
+
+<Source code={carbonThemeCss} language="css" />
+
+Checkbox style:
+
+<Source code={carbonCheckboxCss} language="css" />
+
+### Aurora
+
+<Story of={StyleStories.Aurora} />
+
+<Source of={StyleStories.Aurora} />
+
+Shared style:
+
+<Source code={auroraThemeCss} language="css" />
+
+Checkbox style:
+
+<Source code={auroraCheckboxCss} language="css" />
+
+### Forest
+
+<Story of={StyleStories.Forest} />
+
+<Source of={StyleStories.Forest} />
+
+Shared style:
+
+<Source code={forestThemeCss} language="css" />
+
+Checkbox style:
+
+<Source code={forestCheckboxCss} language="css" />
+
+### Sunset
+
+<Story of={StyleStories.Sunset} />
+
+<Source of={StyleStories.Sunset} />
+
+Shared style:
+
+<Source code={sunsetThemeCss} language="css" />
+
+Checkbox style:
+
+<Source code={sunsetCheckboxCss} language="css" />
+
+### Porcelain
+
+<Story of={StyleStories.Porcelain} />
+
+<Source of={StyleStories.Porcelain} />
+
+Shared style:
+
+<Source code={porcelainThemeCss} language="css" />
+
+Checkbox style:
+
+<Source code={porcelainCheckboxCss} language="css" />
+
+### Candy
+
+<Story of={StyleStories.Candy} />
+
+<Source of={StyleStories.Candy} />
+
+Shared style:
+
+<Source code={candyThemeCss} language="css" />
+
+Checkbox style:
+
+<Source code={candyCheckboxCss} language="css" />
+
+### Terminal
+
+<Story of={StyleStories.Terminal} />
+
+<Source of={StyleStories.Terminal} />
+
+Shared style:
+
+<Source code={terminalThemeCss} language="css" />
+
+Checkbox style:
+
+<Source code={terminalCheckboxCss} language="css" />
+
+### Material
+
+<Story of={StyleStories.Material} />
+
+<Source of={StyleStories.Material} />
+
+Shared style:
+
+<Source code={materialThemeCss} language="css" />
+
+Checkbox style:
+
+<Source code={materialCheckboxCss} language="css" />
+
+### Fluent
+
+<Story of={StyleStories.Fluent} />
+
+<Source of={StyleStories.Fluent} />
+
+Shared style:
+
+<Source code={fluentThemeCss} language="css" />
+
+Checkbox style:
+
+<Source code={fluentCheckboxCss} language="css" />
+
+### Bootstrap
+
+<Story of={StyleStories.Bootstrap} />
+
+<Source of={StyleStories.Bootstrap} />
+
+Shared style:
+
+<Source code={bootstrapThemeCss} language="css" />
+
+Checkbox style:
+
+<Source code={bootstrapCheckboxCss} language="css" />
+
+### Cupertino
+
+<Story of={StyleStories.Cupertino} />
+
+<Source of={StyleStories.Cupertino} />
+
+Shared style:
+
+<Source code={cupertinoThemeCss} language="css" />
+
+Checkbox style:
+
+<Source code={cupertinoCheckboxCss} language="css" />
+
+### Ant Design
+
+<Story of={StyleStories.AntDesign} />
+
+<Source of={StyleStories.AntDesign} />
+
+Shared style:
+
+<Source code={antDesignThemeCss} language="css" />
+
+Checkbox style:
+
+<Source code={antDesignCheckboxCss} language="css" />
+
+## Theme File Pattern
+
+Use [Theme Colors](../../jb-core/theme/stories/colors.mdx) and [Theme Sizes](../../jb-core/theme/stories/sizes.mdx) as the common design-token guides. Theme-pack files should keep reusable demo variables in [`docs/styles`](https://github.com/javadbat/design-system/tree/main/docs/styles), then each component should keep its own style CSS in its story [`styles`](https://github.com/javadbat/design-system/tree/main/modules/jb-checkbox/stories/styles) folder.
+
+```css
+/* https://github.com/javadbat/design-system/blob/main/docs/styles/carbon.css */
+.theme-name-style {
+  /* shared design-system variables */
+}
+
+/* https://github.com/javadbat/design-system/blob/main/modules/jb-checkbox/stories/styles/style-carbon.css */
+.theme-name-checkbox {
+  /* checkbox-specific variables and official parts */
+}
+```
+
+This keeps common theme tokens reusable and lets each component page show only the CSS it needs.

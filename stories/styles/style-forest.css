@@ -1,0 +1,22 @@
+.forest-checkbox {
+    display: block;
+    width: 100%;
+    --jb-checkbox-label-color: var(--jb-text-primary);
+    --jb-checkbox-message-color: var(--jb-text-secondary);
+    --jb-checkbox-message-color-error: #b42318;
+    --jb-checkbox-check-bg-color: #f5f0df;
+    --jb-checkbox-check-bg-color-checked: var(--jb-primary);
+    --jb-checkbox-check-bg-color-disabled: #d9cfb8;
+    --jb-checkbox-check-border-color: #718355;
+    --jb-checkbox-check-mark-color: transparent;
+    --jb-checkbox-check-mark-color-checked: #fffdf2;
+    --jb-checkbox-focus-ring-color: #4f772d;
+}
+
+.forest-checkbox::part(check-bg) {
+    stroke-width: 2px;
+}
+
+.forest-checkbox:state(invalid)::part(message) {
+    font-weight: 600;
+}

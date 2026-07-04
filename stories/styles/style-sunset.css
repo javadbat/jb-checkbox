@@ -1,0 +1,18 @@
+.sunset-checkbox {
+    display: block;
+    width: 100%;
+    --jb-checkbox-label-color: var(--jb-text-primary);
+    --jb-checkbox-message-color: var(--jb-text-secondary);
+    --jb-checkbox-message-color-error: #b42318;
+    --jb-checkbox-check-bg-color: #fff4e8;
+    --jb-checkbox-check-bg-color-checked: var(--jb-primary);
+    --jb-checkbox-check-bg-color-disabled: #f3d6c2;
+    --jb-checkbox-check-border-color: #e36b3f;
+    --jb-checkbox-check-mark-color: transparent;
+    --jb-checkbox-check-mark-color-checked: #ffffff;
+    --jb-checkbox-focus-ring-color: #e36b3f;
+}
+
+.sunset-checkbox:state(checked)::part(checkbox) {
+    filter: drop-shadow(0 0.25rem 0.5rem oklch(62% 0.18 38 / 0.32));
+}

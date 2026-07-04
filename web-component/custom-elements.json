@@ -288,6 +288,26 @@
               "description": "Label color."
             },
             {
+              "name": "--jb-checkbox-label-font-size",
+              "description": "Base label font size."
+            },
+            {
+              "name": "--jb-checkbox-label-font-size-xs",
+              "description": "Label font size for size=\"xs\"."
+            },
+            {
+              "name": "--jb-checkbox-label-font-size-sm",
+              "description": "Label font size for size=\"sm\"."
+            },
+            {
+              "name": "--jb-checkbox-label-font-size-lg",
+              "description": "Label font size for size=\"lg\"."
+            },
+            {
+              "name": "--jb-checkbox-label-font-size-xl",
+              "description": "Label font size for size=\"xl\"."
+            },
+            {
               "name": "--jb-checkbox-message-color",
               "description": "Helper message color."
             },
@@ -318,6 +338,14 @@
             {
               "name": "--jb-checkbox-message-font-size-xl",
               "description": "Message font size for size=\"xl\"."
+            },
+            {
+              "name": "--jb-checkbox-check-border-radius",
+              "description": "Checkbox icon radius before checked state."
+            },
+            {
+              "name": "--jb-checkbox-check-border-radius-checked",
+              "description": "Checkbox icon radius when checked."
             },
             {
               "name": "--jb-checkbox-check-bg-color",

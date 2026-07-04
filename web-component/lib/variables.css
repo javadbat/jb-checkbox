@@ -3,6 +3,8 @@
   --size:var(--jb-checkbox-size, 2rem);
   --label-font-size: var(--jb-checkbox-label-font-size, 1rem);
   --message-font-size: var(--jb-checkbox-message-font-size, 0.7rem);
+  --check-border-radius: var(--jb-checkbox-check-border-radius, 5px);
+  --check-border-radius-checked: var(--jb-checkbox-check-border-radius-checked, 3.625rem);
   /* Theme/Color */
   --label-color:var(--jb-checkbox-label-color, var(--jb-neutral-5));
   --message-color:var(--jb-checkbox-message-color, var(--jb-text-secondary));

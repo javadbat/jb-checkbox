@@ -1,0 +1,24 @@
+.ant-checkbox {
+    display: block;
+    width: 100%;
+    --jb-checkbox-label-color: #262626;
+    --jb-checkbox-message-color: #595959;
+    --jb-checkbox-message-color-error: #ff4d4f;
+    --jb-checkbox-check-bg-color: #ffffff;
+    --jb-checkbox-check-bg-color-checked: #1677ff;
+    --jb-checkbox-check-bg-color-disabled: #f5f5f5;
+    --jb-checkbox-check-border-color: #d9d9d9;
+    --jb-checkbox-check-mark-color: transparent;
+    --jb-checkbox-check-mark-color-checked: #ffffff;
+    --jb-checkbox-check-border-radius: 0.125rem;
+    --jb-checkbox-check-border-radius-checked: 0.125rem;
+    --jb-checkbox-focus-ring-color: #1677ff;
+}
+
+.ant-checkbox:state(checked)::part(check-bg) {
+    stroke: #1677ff;
+}
+
+.ant-checkbox:state(invalid)::part(message) {
+    color: #ff4d4f;
+}

@@ -1,0 +1,24 @@
+.material-checkbox {
+    display: block;
+    width: 100%;
+    --jb-checkbox-label-color: var(--jb-text-secondary);
+    --jb-checkbox-message-color: #5f6368;
+    --jb-checkbox-message-color-error: #b3261e;
+    --jb-checkbox-check-bg-color: var(--jb-surface);
+    --jb-checkbox-check-bg-color-checked: var(--jb-primary);
+    --jb-checkbox-check-bg-color-disabled: #f1f3f4;
+    --jb-checkbox-check-border-color: #5f6368;
+    --jb-checkbox-check-mark-color: transparent;
+    --jb-checkbox-check-mark-color-checked: var(--jb-text-contrast);
+    --jb-checkbox-check-border-radius: 0.125rem;
+    --jb-checkbox-check-border-radius-checked: 0.125rem;
+    --jb-checkbox-focus-ring-color: var(--jb-focus-color);
+}
+
+.material-checkbox::part(check-bg) {
+    stroke-width: 2px;
+}
+
+.material-checkbox:state(disabled)::part(label) {
+    color: var(--jb-text-disabled);
+}

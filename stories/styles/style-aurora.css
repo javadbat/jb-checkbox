@@ -1,0 +1,22 @@
+.aurora-checkbox {
+    display: block;
+    width: 100%;
+    --jb-checkbox-label-color: var(--jb-text-primary);
+    --jb-checkbox-message-color: var(--jb-text-secondary);
+    --jb-checkbox-message-color-error: #ff8ab3;
+    --jb-checkbox-check-bg-color: #111827;
+    --jb-checkbox-check-bg-color-checked: var(--jb-primary);
+    --jb-checkbox-check-bg-color-disabled: oklch(100% 0 0 / 0.08);
+    --jb-checkbox-check-border-color: var(--jb-border-color);
+    --jb-checkbox-check-mark-color: transparent;
+    --jb-checkbox-check-mark-color-checked: var(--jb-text-contrast);
+    --jb-checkbox-focus-ring-color: var(--jb-focus-color);
+}
+
+.aurora-checkbox::part(checkbox) {
+    filter: drop-shadow(0 0 0.5rem oklch(82% 0.14 190 / 0.34));
+}
+
+.aurora-checkbox:state(checked)::part(label) {
+    color: var(--jb-primary);
+}

@@ -1,0 +1,20 @@
+.bootstrap-checkbox {
+    display: block;
+    width: 100%;
+    --jb-checkbox-label-color: #212529;
+    --jb-checkbox-message-color: #6c757d;
+    --jb-checkbox-message-color-error: #dc3545;
+    --jb-checkbox-check-bg-color: #ffffff;
+    --jb-checkbox-check-bg-color-checked: #0d6efd;
+    --jb-checkbox-check-bg-color-disabled: #e9ecef;
+    --jb-checkbox-check-border-color: #adb5bd;
+    --jb-checkbox-check-mark-color: transparent;
+    --jb-checkbox-check-mark-color-checked: #ffffff;
+    --jb-checkbox-check-border-radius: 0.25rem;
+    --jb-checkbox-check-border-radius-checked: 0.25rem;
+    --jb-checkbox-focus-ring-color: oklch(55% 0.19 255 / 0.45);
+}
+
+.bootstrap-checkbox:state(invalid)::part(check-bg) {
+    stroke: #dc3545;
+}

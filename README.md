@@ -202,36 +202,7 @@ jb-checkbox:state(invalid)::part(message) {
 
 ## Custom style
 
-Set CSS variables in the parent scope of the component.
-
-| CSS variable name | description |
-| --- | --- |
-| `--jb-checkbox-size` | Base checkbox size. |
-| `--jb-checkbox-size-xs` | Checkbox size for `size="xs"`. |
-| `--jb-checkbox-size-sm` | Checkbox size for `size="sm"`. |
-| `--jb-checkbox-size-lg` | Checkbox size for `size="lg"`. |
-| `--jb-checkbox-size-xl` | Checkbox size for `size="xl"`. |
-| `--jb-checkbox-label-color` | Label color. |
-| `--jb-checkbox-label-font-size` | Base label font size. |
-| `--jb-checkbox-label-font-size-xs` | Label font size for `size="xs"`. |
-| `--jb-checkbox-label-font-size-sm` | Label font size for `size="sm"`. |
-| `--jb-checkbox-label-font-size-lg` | Label font size for `size="lg"`. |
-| `--jb-checkbox-label-font-size-xl` | Label font size for `size="xl"`. |
-| `--jb-checkbox-message-color` | Helper message color. |
-| `--jb-checkbox-message-color-error` | Validation message color. |
-| `--jb-checkbox-message-box-display` | Message box display value. |
-| `--jb-checkbox-message-font-size` | Base message font size. |
-| `--jb-checkbox-message-font-size-xs` | Message font size for `size="xs"`. |
-| `--jb-checkbox-message-font-size-sm` | Message font size for `size="sm"`. |
-| `--jb-checkbox-message-font-size-lg` | Message font size for `size="lg"`. |
-| `--jb-checkbox-message-font-size-xl` | Message font size for `size="xl"`. |
-| `--jb-checkbox-check-bg-color` | Checkbox background color. |
-| `--jb-checkbox-check-bg-color-checked` | Checkbox background color when checked. |
-| `--jb-checkbox-check-bg-color-disabled` | Checkbox background color when disabled. |
-| `--jb-checkbox-check-border-color` | Checkbox border color. |
-| `--jb-checkbox-check-mark-color` | Check mark color. |
-| `--jb-checkbox-check-mark-color-checked` | Check mark color when checked. |
-| `--jb-checkbox-focus-ring-color` | Focus outline color around the checkbox icon. |
+For complete styling guidance, live examples, CSS parts, custom states, variables, and copyable style recipes, see [Styling](https://javadbat.github.io/design-system/?path=/docs/components-form-elements-jbcheckbox-styling).
 
 ## Accessibility notes
 

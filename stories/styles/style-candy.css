@@ -1,0 +1,24 @@
+.candy-checkbox {
+    display: block;
+    width: 100%;
+    --jb-checkbox-label-color: #423047;
+    --jb-checkbox-message-color: #87678f;
+    --jb-checkbox-message-color-error: #db2777;
+    --jb-checkbox-check-bg-color: #fff7fb;
+    --jb-checkbox-check-bg-color-checked: #ec4899;
+    --jb-checkbox-check-bg-color-disabled: #f7d7e8;
+    --jb-checkbox-check-border-color: #f9a8d4;
+    --jb-checkbox-check-mark-color: transparent;
+    --jb-checkbox-check-mark-color-checked: #ffffff;
+    --jb-checkbox-check-border-radius: 0.75rem;
+    --jb-checkbox-check-border-radius-checked: 0.75rem;
+    --jb-checkbox-focus-ring-color: #0f9f8f;
+}
+
+.candy-checkbox:state(checked)::part(checkbox) {
+    filter: drop-shadow(0 0 0.45rem oklch(72% 0.18 340 / 0.36));
+}
+
+.candy-checkbox:state(invalid)::part(message) {
+    font-weight: 700;
+}

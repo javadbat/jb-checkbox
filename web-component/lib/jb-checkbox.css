@@ -24,7 +24,7 @@
         .svg-wrapper {
             outline: 2px solid var(--focus-ring-color);
             outline-offset: 2px;
-            border-radius: 5px;
+            border-radius: var(--check-border-radius);
         }
     }
 
@@ -61,6 +61,8 @@
         height: var(--size);
         grid-area: check;
         display: block;
+        border-radius: var(--check-border-radius);
+        overflow: visible;
 
         .check-box-svg {
             width: 100%;
@@ -69,8 +71,8 @@
             &.--active {
                 .checkmark__cube {
                     transition: all 0.3s ease-in-out;
-                    rx: 3.625rem;
-                    ry: 3.625rem;
+                    rx: var(--check-border-radius-checked);
+                    ry: var(--check-border-radius-checked);
                     stroke: transparent;
 
                 }
@@ -83,6 +85,8 @@
             .checkmark__cube {
                 fill: var(--check-bg-color);
                 transition: all 0.3s ease-in-out;
+                rx: var(--check-border-radius);
+                ry: var(--check-border-radius);
                 stroke: var(--check-border-color);
                 stroke-width: 1px;
             }
