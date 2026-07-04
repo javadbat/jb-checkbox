@@ -212,6 +212,11 @@ Set CSS variables in the parent scope of the component.
 | `--jb-checkbox-size-lg` | Checkbox size for `size="lg"`. |
 | `--jb-checkbox-size-xl` | Checkbox size for `size="xl"`. |
 | `--jb-checkbox-label-color` | Label color. |
+| `--jb-checkbox-label-font-size` | Base label font size. |
+| `--jb-checkbox-label-font-size-xs` | Label font size for `size="xs"`. |
+| `--jb-checkbox-label-font-size-sm` | Label font size for `size="sm"`. |
+| `--jb-checkbox-label-font-size-lg` | Label font size for `size="lg"`. |
+| `--jb-checkbox-label-font-size-xl` | Label font size for `size="xl"`. |
 | `--jb-checkbox-message-color` | Helper message color. |
 | `--jb-checkbox-message-color-error` | Validation message color. |
 | `--jb-checkbox-message-box-display` | Message box display value. |

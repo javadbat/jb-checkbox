@@ -1,7 +1,7 @@
 :host{
   /* Size */
   --size:var(--jb-checkbox-size, 2rem);
-  --label-font-size:1rem;
+  --label-font-size: var(--jb-checkbox-label-font-size, 1rem);
   --message-font-size: var(--jb-checkbox-message-font-size, 0.7rem);
   /* Theme/Color */
   --label-color:var(--jb-checkbox-label-color, var(--jb-neutral-5));
@@ -28,23 +28,23 @@
 /* Size */
 :host([size="xs"]){
   --size:var(--jb-checkbox-size-xs, 1rem);
-  --label-font-size:0.5rem;
+  --label-font-size: var(--jb-checkbox-label-font-size-xs, 0.5rem);
     /*0.7 - (0.0875 *2) */
   --message-font-size: var(--jb-checkbox-message-font-size-xs, 0.525rem);
 }
 :host([size="sm"]){
   --size:var(--jb-checkbox-size-sm, 1.5rem);
-  --label-font-size:0.75rem;
+  --label-font-size: var(--jb-checkbox-label-font-size-sm, 0.75rem);
   --message-font-size: var(--jb-checkbox-message-font-size-sm, 0.6125rem);
 }
 :host([size="lg"]){
   --size:var(--jb-checkbox-size-lg, 2.5rem);
-  --label-font-size:1.25rem;
+  --label-font-size: var(--jb-checkbox-label-font-size-lg, 1.25rem);
     /*0.7 + 0.0875*/
   --message-font-size: var(--jb-checkbox-message-font-size-lg, 0.7875rem);
 }
 :host([size="xl"]){
   --size: var(--jb-checkbox-size-xl, 3rem);
-  --label-font-size:1.5rem;
+  --label-font-size: var(--jb-checkbox-label-font-size-xl, 1.5rem);
     --message-font-size: var(--jb-checkbox-message-font-size-xl, 0.875rem);
 }
