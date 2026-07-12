@@ -61,6 +61,11 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
     return this.getAttribute('name') || '';
   }
   initialValue = false;
+  formResetCallback() {
+    this.value = this.initialValue;
+    this.#validation.reset();
+    this.#internals?.setValidity({}, '');
+  }
   get isDirty(): boolean {
     return this.#value !== this.initialValue;
   }
@@ -100,7 +105,6 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
     return this.#internals?.form??null;
   }
   formAssociatedCallback?: ((form: HTMLFormElement | null) => void) | undefined;
-  formResetCallback?: (() => void) | undefined;
   formDisabledCallback?: ((disabled: boolean) => void) | undefined;
   formStateRestoreCallback?: ((state: string | File | FormData | null, mode: 'autocomplete' | 'restore') => void) | undefined;
   connectedCallback(): void {
