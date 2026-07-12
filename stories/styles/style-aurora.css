@@ -1,4 +1,4 @@
-.aurora-checkbox {
+jb-checkbox.aurora-style {
     display: block;
     width: 100%;
     --jb-checkbox-label-color: var(--jb-text-primary);
@@ -13,10 +13,10 @@
     --jb-checkbox-focus-ring-color: var(--jb-focus-color);
 }
 
-.aurora-checkbox::part(checkbox) {
+jb-checkbox.aurora-style::part(checkbox) {
     filter: drop-shadow(0 0 0.5rem oklch(82% 0.14 190 / 0.34));
 }
 
-.aurora-checkbox:state(checked)::part(label) {
+jb-checkbox.aurora-style:state(checked)::part(label) {
     color: var(--jb-primary);
 }

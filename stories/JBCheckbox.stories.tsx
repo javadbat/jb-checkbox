@@ -1,6 +1,6 @@
 import { JBCheckbox } from 'jb-checkbox/react';
 import JBCheckboxTest from './JBCheckboxTestPage';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, fn, userEvent, waitFor } from 'storybook/test';
 import type { JBCheckboxWebComponent } from '../dist/jb-checkbox';
 

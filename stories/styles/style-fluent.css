@@ -1,24 +1,24 @@
-.fluent-checkbox {
+jb-checkbox.fluent-style {
     display: block;
     width: 100%;
-    --jb-checkbox-label-color: #201f1e;
+    --jb-checkbox-label-color: var(--jb-text-primary);
     --jb-checkbox-message-color: #605e5c;
     --jb-checkbox-message-color-error: #a4262c;
-    --jb-checkbox-check-bg-color: #ffffff;
-    --jb-checkbox-check-bg-color-checked: #0078d4;
-    --jb-checkbox-check-bg-color-disabled: #f3f2f1;
+    --jb-checkbox-check-bg-color: var(--jb-text-contrast);
+    --jb-checkbox-check-bg-color-checked: var(--jb-focus-color);
+    --jb-checkbox-check-bg-color-disabled: var(--jb-background);
     --jb-checkbox-check-border-color: #605e5c;
     --jb-checkbox-check-mark-color: transparent;
-    --jb-checkbox-check-mark-color-checked: #ffffff;
+    --jb-checkbox-check-mark-color-checked: var(--jb-text-contrast);
     --jb-checkbox-check-border-radius: 0.125rem;
     --jb-checkbox-check-border-radius-checked: 0.125rem;
-    --jb-checkbox-focus-ring-color: #0078d4;
+    --jb-checkbox-focus-ring-color: var(--jb-focus-color);
 }
 
-.fluent-checkbox::part(check-bg) {
+jb-checkbox.fluent-style::part(check-bg) {
     stroke-width: 1.5px;
 }
 
-.fluent-checkbox:state(checked)::part(label) {
-    color: #0078d4;
+jb-checkbox.fluent-style:state(checked)::part(label) {
+    color: var(--jb-focus-color);
 }

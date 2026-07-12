@@ -1,4 +1,4 @@
-.forest-checkbox {
+jb-checkbox.forest-style {
     display: block;
     width: 100%;
     --jb-checkbox-label-color: var(--jb-text-primary);
@@ -13,10 +13,10 @@
     --jb-checkbox-focus-ring-color: #4f772d;
 }
 
-.forest-checkbox::part(check-bg) {
+jb-checkbox.forest-style::part(check-bg) {
     stroke-width: 2px;
 }
 
-.forest-checkbox:state(invalid)::part(message) {
+jb-checkbox.forest-style:state(invalid)::part(message) {
     font-weight: 600;
 }

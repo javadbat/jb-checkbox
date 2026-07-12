@@ -1,6 +1,6 @@
 import React from 'react';
 import { JBCheckbox } from 'jb-checkbox/react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import '../../../docs/styles/ant-design.css';
 import '../../../docs/styles/aurora.css';
 import '../../../docs/styles/bootstrap.css';
@@ -35,18 +35,18 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const styleSamples = [
-  { name: "Carbon", className: "carbon-style carbon-checkbox" },
-  { name: "Aurora", className: "aurora-style aurora-checkbox" },
-  { name: "Forest", className: "forest-style forest-checkbox" },
-  { name: "Sunset", className: "sunset-style sunset-checkbox" },
-  { name: "Porcelain", className: "porcelain-style porcelain-checkbox" },
-  { name: "Candy", className: "candy-style candy-checkbox" },
-  { name: "Terminal", className: "terminal-style terminal-checkbox" },
-  { name: "Material", className: "material-style material-checkbox" },
-  { name: "Fluent", className: "fluent-style fluent-checkbox" },
-  { name: "Bootstrap", className: "bootstrap-style bootstrap-checkbox" },
-  { name: "Cupertino", className: "cupertino-style cupertino-checkbox" },
-  { name: "Ant Design", className: "ant-design-style ant-checkbox" },
+  { name: "Carbon", className: "carbon-style carbon-style" },
+  { name: "Aurora", className: "aurora-style aurora-style" },
+  { name: "Forest", className: "forest-style forest-style" },
+  { name: "Sunset", className: "sunset-style sunset-style" },
+  { name: "Porcelain", className: "porcelain-style porcelain-style" },
+  { name: "Candy", className: "candy-style candy-style" },
+  { name: "Terminal", className: "terminal-style terminal-style" },
+  { name: "Material", className: "material-style material-style" },
+  { name: "Fluent", className: "fluent-style fluent-style" },
+  { name: "Bootstrap", className: "bootstrap-style bootstrap-style" },
+  { name: "Cupertino", className: "cupertino-style cupertino-style" },
+  { name: "Ant Design", className: "ant-design-style" },
 ];
 
 function CheckboxStyleSample({ className }: { className: string }) {
@@ -108,60 +108,60 @@ export const Gallery: Story = {
 
 export const Carbon: Story = {
   name: "Carbon",
-  render: () => <CheckboxStyleSample className="carbon-style carbon-checkbox" />,
+  render: () => <CheckboxStyleSample className="carbon-style carbon-style" />,
 };
 
 export const Aurora: Story = {
   name: "Aurora",
-  render: () => <CheckboxStyleSample className="aurora-style aurora-checkbox" />,
+  render: () => <CheckboxStyleSample className="aurora-style aurora-style" />,
 };
 
 export const Forest: Story = {
   name: "Forest",
-  render: () => <CheckboxStyleSample className="forest-style forest-checkbox" />,
+  render: () => <CheckboxStyleSample className="forest-style forest-style" />,
 };
 
 export const Sunset: Story = {
   name: "Sunset",
-  render: () => <CheckboxStyleSample className="sunset-style sunset-checkbox" />,
+  render: () => <CheckboxStyleSample className="sunset-style sunset-style" />,
 };
 
 export const Porcelain: Story = {
   name: "Porcelain",
-  render: () => <CheckboxStyleSample className="porcelain-style porcelain-checkbox" />,
+  render: () => <CheckboxStyleSample className="porcelain-style porcelain-style" />,
 };
 
 export const Candy: Story = {
   name: "Candy",
-  render: () => <CheckboxStyleSample className="candy-style candy-checkbox" />,
+  render: () => <CheckboxStyleSample className="candy-style candy-style" />,
 };
 
 export const Terminal: Story = {
   name: "Terminal",
-  render: () => <CheckboxStyleSample className="terminal-style terminal-checkbox" />,
+  render: () => <CheckboxStyleSample className="terminal-style terminal-style" />,
 };
 
 export const Material: Story = {
   name: "Material",
-  render: () => <CheckboxStyleSample className="material-style material-checkbox" />,
+  render: () => <CheckboxStyleSample className="material-style material-style" />,
 };
 
 export const Fluent: Story = {
   name: "Fluent",
-  render: () => <CheckboxStyleSample className="fluent-style fluent-checkbox" />,
+  render: () => <CheckboxStyleSample className="fluent-style fluent-style" />,
 };
 
 export const Bootstrap: Story = {
   name: "Bootstrap",
-  render: () => <CheckboxStyleSample className="bootstrap-style bootstrap-checkbox" />,
+  render: () => <CheckboxStyleSample className="bootstrap-style bootstrap-style" />,
 };
 
 export const Cupertino: Story = {
   name: "Cupertino",
-  render: () => <CheckboxStyleSample className="cupertino-style cupertino-checkbox" />,
+  render: () => <CheckboxStyleSample className="cupertino-style cupertino-style" />,
 };
 
 export const AntDesign: Story = {
   name: "Ant Design",
-  render: () => <CheckboxStyleSample className="ant-design-style ant-checkbox" />,
+  render: () => <CheckboxStyleSample className="ant-design-style" />,
 };

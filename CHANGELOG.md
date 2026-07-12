@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Changed
+
+- Standardized all custom theme recipes on `jb-checkbox.<theme>-style` selectors without redundant component hook classes.
+
 ## 1.3.0
 
 ### Added
