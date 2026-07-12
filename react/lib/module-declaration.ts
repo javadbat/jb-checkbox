@@ -9,6 +9,8 @@ declare module "react" {
       class?: string,
       name?: string,
       label?: string | null,
+      value?: boolean,
+      initialValue?: boolean,
     }
   }
 }

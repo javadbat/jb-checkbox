@@ -4,7 +4,6 @@ import { type RefObject, useEffect } from "react";
 
 export type JBCheckboxAttributes = {
   name?: string,
-  value?: boolean | null | undefined,
   message?: string | null | undefined,
   error?:string | null | undefined
   validationList?: ValidationItem<ValidationValue>[] | null,
@@ -48,12 +47,6 @@ export function useJBCheckboxAttribute(element: RefObject<JBCheckboxWebComponent
       props.required ? element?.current?.setAttribute('required', '') : element?.current?.removeAttribute('required');
     }
   }, [props.required, element?.current]);
-
-  useEffect(() => {
-    if (element.current && props.value !== null && props.value !== undefined) {
-      element.current.value = props.value;
-    }
-  }, [props.value, element?.current]);
 
   useEffect(() => {
     if (props.error) {

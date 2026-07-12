@@ -4,7 +4,12 @@
 
 ### Changed
 
+- Added the React `initialValue` prop and forwarded `value` and `initialValue` directly as React 19 custom-element properties.
 - Standardized all custom theme recipes on `jb-checkbox.<theme>-style` selectors without redundant component hook classes.
+
+### Fixed
+
+- Preserved property-assigned values during connection when no `value` attribute is present.
 
 ## 1.3.0
 

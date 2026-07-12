@@ -148,7 +148,9 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
     this.elements.componentWrapper.addEventListener('keyup', (event) => this.#onKeyUp(event));
   }
   initProp() {
-    this.value = this.getAttribute('value') === "true" || false;
+    if (this.hasAttribute('value')) {
+      this.value = this.getAttribute('value') === "true";
+    }
   }
   static get observedAttributes(): string[] {
     return ["label", "message", 'value', 'name', 'disabled', 'required', 'error'];
