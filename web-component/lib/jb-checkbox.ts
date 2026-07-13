@@ -72,6 +72,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
   #required = false;
   set required(value: boolean) {
     this.#required = value;
+    if (this.#internals) this.#internals.ariaRequired = value ? "true" : "false";
     this.#validation.checkValiditySync({ showError: false });
   }
   get required() {
@@ -184,6 +185,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
         break;
       case 'message':
         this.elements.message.innerHTML = value;
+        if (this.#internals) this.#internals.ariaDescription = value;
         break;
       case 'error':
         this.reportValidity();
@@ -297,12 +299,14 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
     //invalid state is used for ui purpose
     this.#internals?.states?.add("invalid");
     this.#internals!.ariaInvalid = "true"
+    this.#internals!.ariaDescription = error.message;
   }
   clearValidationError() {
     const text = this.getAttribute("message") || "";
     this.elements.message.innerHTML = text;
     this.#internals?.states?.delete("invalid");
     this.#internals!.ariaInvalid = "false"
+    this.#internals!.ariaDescription = text;
   }
   get validationMessage() {
     return this.#internals!.validationMessage;
