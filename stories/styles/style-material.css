@@ -2,12 +2,12 @@ jb-checkbox.material-style {
     display: block;
     width: 100%;
     --jb-checkbox-label-color: var(--jb-text-secondary);
-    --jb-checkbox-message-color: #5f6368;
-    --jb-checkbox-message-color-error: var(--jb-red);
+    --jb-checkbox-message-color: var(--jb-text-secondary);
+    --jb-checkbox-message-color-error: var(--jb-error);
     --jb-checkbox-check-bg-color: var(--jb-surface);
     --jb-checkbox-check-bg-color-checked: var(--jb-primary);
-    --jb-checkbox-check-bg-color-disabled: #f1f3f4;
-    --jb-checkbox-check-border-color: #5f6368;
+    --jb-checkbox-check-bg-color-disabled: var(--jb-surface-container-highest);
+    --jb-checkbox-check-border-color: var(--jb-outline);
     --jb-checkbox-check-mark-color: transparent;
     --jb-checkbox-check-mark-color-checked: var(--jb-text-contrast);
     --jb-checkbox-check-border-radius: 0.125rem;
@@ -16,7 +16,17 @@ jb-checkbox.material-style {
 }
 
 jb-checkbox.material-style::part(check-bg) {
+    rx: 0.125rem;
+    ry: 0.125rem;
     stroke-width: 2px;
+}
+
+jb-checkbox.material-style::part(checkbox) {
+    transition: background-color 150ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+jb-checkbox.material-style:focus-within::part(checkbox) {
+    background: radial-gradient(circle, var(--jb-state-focus) 0 70%, transparent 71%);
 }
 
 jb-checkbox.material-style:state(disabled)::part(label) {
