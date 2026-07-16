@@ -30,6 +30,17 @@
   ],
   "main": "index.js",
   "types": "./web-component/dist/jb-checkbox.d.ts",
+  "exports": {
+    ".": {
+      "types": "./web-component/dist/jb-checkbox.d.ts",
+      "default": "./index.js"
+    },
+    "./react": {
+      "types": "./react/dist/JBCheckbox.d.ts",
+      "default": "./react/index.js"
+    },
+    "./*": "./*"
+  },
   "customElements": "web-component/custom-elements.json",
   "sideEffects": true,
   "repository": {
