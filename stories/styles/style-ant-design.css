@@ -1,12 +1,15 @@
 jb-checkbox.ant-design-style {
     display: block;
     width: 100%;
+    --jb-checkbox-size: 1rem;
+    --jb-checkbox-label-font-size: 0.875rem;
+    --jb-checkbox-message-font-size: 0.75rem;
     --jb-checkbox-label-color: var(--jb-text-primary);
     --jb-checkbox-message-color: var(--jb-text-secondary);
     --jb-checkbox-message-color-error: #ff4d4f;
     --jb-checkbox-check-bg-color: var(--jb-surface);
     --jb-checkbox-check-bg-color-checked: var(--jb-focus-color);
-    --jb-checkbox-check-bg-color-disabled: var(--jb-background);
+    --jb-checkbox-check-bg-color-disabled: #f5f5f5;
     --jb-checkbox-check-border-color: #d9d9d9;
     --jb-checkbox-check-mark-color: transparent;
     --jb-checkbox-check-mark-color-checked: var(--jb-surface);
