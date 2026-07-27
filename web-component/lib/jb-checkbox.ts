@@ -13,6 +13,7 @@ export * from './types.js';
 export class JBCheckboxWebComponent extends HTMLElement implements WithValidation, JBFormInputStandards<boolean> {
   static get formAssociated() { return true; }
   #value = false;
+  #isDirty = false;
   //when we call on before change we save new value here so when user use event.target.value he will see new value but after the event bubble done we null it.
   //it mostly defined here for react eco-system
   #ChangeEventPreservedValue: boolean | null = null;
@@ -26,6 +27,10 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
     return this.#value;
   }
   set value(value: boolean) {
+    this.#isDirty = true;
+    this.#setValue(value);
+  }
+  #setValue(value: boolean) {
     if (this.#value !== value) {
       this.#value = value;
     }
@@ -60,9 +65,22 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
   get name() {
     return this.getAttribute('name') || '';
   }
-  initialValue = false;
+  #initialValue = false;
+  /**
+   * Default and reset value. It initializes `value` until the live value is explicitly set.
+   */
+  get initialValue(): boolean {
+    return this.#initialValue;
+  }
+  set initialValue(value: boolean) {
+    this.#initialValue = value ?? false;
+    if (!this.#isDirty) {
+      this.#setValue(this.#initialValue);
+    }
+  }
   formResetCallback() {
-    this.value = this.initialValue;
+    this.#isDirty = false;
+    this.#setValue(this.initialValue);
     this.#validation.reset();
     this.#internals?.setValidity({}, '');
   }
@@ -167,7 +185,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
   onAttributeChange(name: string, value: string): void {
     switch (name) {
       case 'value':
-        this.value = Boolean(value);
+        this.value = value === "true";
         break;
       case 'label':
         this.elements.label.innerText = value;
@@ -200,11 +218,14 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
     const isEventPrevented = this.#dispatchOnBeforeChangeEvent();
     this.#ChangeEventPreservedValue = null;
     if (!isEventPrevented) {
-      this.value = !this.#value;
+      const wasDirty = this.#isDirty;
+      this.#isDirty = true;
+      this.#setValue(!this.#value);
       this.#validation.checkValidity({ showError: true });
       const DispatchedEvent = this.#dispatchOnChangeEvent();
       if (DispatchedEvent.defaultPrevented) {
-        this.value = !this.#value;
+        this.#setValue(!this.#value);
+        this.#isDirty = wasDirty;
       }
     }
   }

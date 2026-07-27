@@ -77,7 +77,7 @@ Use the label slot when the label needs custom markup:
 | `required` | `boolean` | no | Enables required validation. |
 | `validation` | `ValidationHelper<boolean>` | yes | Validation helper from `jb-validation`; set `validation.list` for custom rules. |
 | `name` | `string` | yes | Current `name` attribute value. |
-| `initialValue` | `boolean` | no | Baseline value used by `isDirty`. |
+| `initialValue` | `boolean` | no | Default and reset value. It initializes `value` until the live value is explicitly set. |
 | `isDirty` | `boolean` | yes | `true` when current `value` differs from `initialValue`. |
 | `isAutoValidationDisabled` | `boolean` | no | Compatibility flag for form input standards. |
 | `validationMessage` | `string` | yes | Current native validation message from `ElementInternals`. |

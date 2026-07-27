@@ -5,10 +5,13 @@
 ### Added
 
 - Added the standard `formResetCallback()` to restore `initialValue` and clear validation state.
+- Added Storybook interaction coverage for initial-value initialization, live-value precedence, explicit `null`, and native form reset.
 
 ### Changed
 
 - Added the React `initialValue` prop and forwarded `value` and `initialValue` directly as React 19 custom-element properties.
+- Updated `initialValue` to seed `value` only until the live value is explicitly set; native form reset restores the latest initial value and re-enables initialization.
+- Updated the React wrapper so an omitted `value` does not overwrite `initialValue`, while explicit `null` still clears the live value.
 - Standardized all custom theme recipes on `jb-checkbox.<theme>-style` selectors without redundant component hook classes.
 
 ### Fixed

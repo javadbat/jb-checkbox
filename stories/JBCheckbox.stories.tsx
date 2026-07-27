@@ -1,8 +1,10 @@
 import { JBCheckbox } from 'jb-checkbox/react';
+import { JBButton } from 'jb-button/react';
 import JBCheckboxTest from './JBCheckboxTestPage';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, fn, userEvent, waitFor } from 'storybook/test';
 import type { JBCheckboxWebComponent } from '../dist/jb-checkbox';
+import { useRef } from 'react';
 
 const meta = {
   title: "Components/form elements/JBCheckbox",
@@ -18,6 +20,113 @@ export const Normal: Story = {
     onChange: (e) => { console.log('onChange', e.target.value); }
   }
 };
+
+export const InitialValue: Story = {
+  render: (args) => {
+    const formRef = useRef<HTMLFormElement>(null);
+    return (
+      <form ref={formRef}>
+        <JBCheckbox {...args} />
+        <JBButton onClick={() => formRef.current?.reset()}>Reset</JBButton>
+      </form>
+    );
+  },
+  args: {
+    label: 'initial value',
+    initialValue: true,
+  },
+  play: async ({ canvasElement }) => {
+    const checkbox = canvasElement.querySelector<JBCheckboxWebComponent>('jb-checkbox');
+    const wrapper = checkbox?.shadowRoot?.querySelector<HTMLElement>('.jb-checkbox-web-component');
+    const resetButton = canvasElement.querySelector('jb-button')?.shadowRoot?.querySelector<HTMLButtonElement>('button');
+
+    expect(checkbox).toBeTruthy();
+    expect(wrapper).toBeTruthy();
+    expect(resetButton).toBeTruthy();
+
+    await waitFor(() => {
+      expect(checkbox?.initialValue).toBe(true);
+      expect(checkbox?.value).toBe(true);
+      expect(checkbox?.checked).toBe(true);
+      expect(checkbox?.isDirty).toBe(false);
+    });
+
+    // A canceled change must restore the assignment latch as well as value.
+    checkbox!.addEventListener('change', (event) => event.preventDefault(), { once: true });
+    await userEvent.click(wrapper!);
+
+    expect(checkbox?.value).toBe(true);
+    expect(checkbox?.checked).toBe(true);
+    expect(checkbox?.isDirty).toBe(false);
+
+    checkbox!.initialValue = false;
+
+    expect(checkbox?.value).toBe(false);
+    expect(checkbox?.isDirty).toBe(false);
+
+    checkbox!.initialValue = true;
+    await userEvent.click(wrapper!);
+
+    expect(checkbox?.value).toBe(false);
+    expect(checkbox?.checked).toBe(false);
+    expect(checkbox?.isDirty).toBe(true);
+
+    checkbox!.initialValue = true;
+
+    expect(checkbox?.value).toBe(false);
+    expect(checkbox?.isDirty).toBe(true);
+
+    await userEvent.click(resetButton!);
+
+    expect(checkbox?.value).toBe(true);
+    expect(checkbox?.checked).toBe(true);
+    expect(checkbox?.initialValue).toBe(checkbox?.value);
+    expect(checkbox?.isDirty).toBe(false);
+
+    checkbox!.initialValue = false;
+
+    expect(checkbox?.value).toBe(false);
+    expect(checkbox?.checked).toBe(false);
+    expect(checkbox?.isDirty).toBe(false);
+  },
+};
+
+export const InitialValueDoesNotOverrideValue: Story = {
+  args: {
+    label: 'value takes precedence',
+    initialValue: false,
+    value: true,
+  },
+  play: async ({ canvasElement }) => {
+    const checkbox = canvasElement.querySelector<JBCheckboxWebComponent>('jb-checkbox');
+
+    await waitFor(() => {
+      expect(checkbox?.initialValue).toBe(false);
+      expect(checkbox?.value).toBe(true);
+      expect(checkbox?.checked).toBe(true);
+      expect(checkbox?.isDirty).toBe(true);
+    });
+  },
+};
+
+export const ExplicitNullValueDoesNotFallBackToInitialValue: Story = {
+  args: {
+    label: 'explicit null value',
+    initialValue: true,
+    value: null,
+  },
+  play: async ({ canvasElement }) => {
+    const checkbox = canvasElement.querySelector<JBCheckboxWebComponent>('jb-checkbox');
+
+    await waitFor(() => {
+      expect(checkbox?.initialValue).toBe(true);
+      expect(checkbox?.value).toBe(false);
+      expect(checkbox?.checked).toBe(false);
+      expect(checkbox?.isDirty).toBe(true);
+    });
+  },
+};
+
 export const WithMessage: Story = {
   args: {
     label: 'Checkbox Label',
