@@ -124,7 +124,9 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
     return this.#internals?.form??null;
   }
   formAssociatedCallback?: ((form: HTMLFormElement | null) => void) | undefined;
-  formDisabledCallback?: ((disabled: boolean) => void) | undefined;
+  formDisabledCallback(disabled: boolean) {
+    this.disabled = disabled;
+  }
   formStateRestoreCallback?: ((state: string | File | FormData | null, mode: 'autocomplete' | 'restore') => void) | undefined;
   connectedCallback(): void {
     // standard web component event that called when all of dom is bound
