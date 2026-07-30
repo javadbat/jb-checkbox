@@ -15,7 +15,7 @@
     "web component",
     "react component"
   ],
-  "version": "1.4.0",
+  "version": "1.5.0",
   "bugs": "https://github.com/javadbat/jb-input/issues",
   "homepage": "https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox",
   "license": "MIT",
@@ -48,10 +48,10 @@
     "url": "git@github.com:javadbat/jb-checkbox.git"
   },
   "dependencies": {
-    "jb-validation": "^0.4.0",
+    "jb-validation": "^1.0.0",
     "jb-core": "^0.30.0"
   },
   "devDependencies": {
-    "jb-form": "^0.11.0"
+    "jb-form": "^0.12.0"
   }
 }

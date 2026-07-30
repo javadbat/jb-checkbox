@@ -65,6 +65,13 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
   get name() {
     return this.getAttribute('name') || '';
   }
+  set name(value: string) {
+    if (value) {
+      this.setAttribute('name', value);
+    } else {
+      this.removeAttribute('name');
+    }
+  }
   #initialValue = false;
   /**
    * Default and reset value. It initializes `value` until the live value is explicitly set.
@@ -121,7 +128,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
     this.#initWebComponent();
   }
   get form(): HTMLFormElement | JBFormWebComponent | null {
-    return this.#internals?.form??null;
+    return this.#internals?.form ?? null;
   }
   formAssociatedCallback?: ((form: HTMLFormElement | null) => void) | undefined;
   formDisabledCallback(disabled: boolean) {

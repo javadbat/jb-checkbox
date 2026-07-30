@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## [1.5.0] - 2026-07-30
 
 ### Added
 
@@ -17,6 +17,7 @@
 
 ### Fixed
 
+- fix name assignment property
 - Preserved property-assigned values during connection when no `value` attribute is present.
 
 ## 1.3.0
