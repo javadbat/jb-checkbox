@@ -8,6 +8,7 @@ import type { ElementsObject, ValidationValue } from './types.js';
 import { registerDefaultVariables } from 'jb-core/theme';
 import { dictionary } from './i18n';
 import { i18n } from 'jb-core/i18n';
+import { parseBooleanAttribute } from 'jb-core';
 export * from './types.js';
 
 export class JBCheckboxWebComponent extends HTMLElement implements WithValidation, JBFormInputStandards<boolean> {
@@ -181,7 +182,7 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
   }
   initProp() {
     if (this.hasAttribute('value')) {
-      this.value = this.getAttribute('value') === "true";
+      this.value = parseBooleanAttribute(this.getAttribute('value'));
     }
   }
   static get observedAttributes(): string[] {
@@ -194,21 +195,17 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
   onAttributeChange(name: string, value: string): void {
     switch (name) {
       case 'value':
-        this.value = value === "true";
+        this.value = parseBooleanAttribute(value);
         break;
       case 'label':
         this.elements.label.innerText = value;
         this.#internals!.ariaLabel = value;
         break;
       case 'disabled':
-        if (value == '' || value === "true") {
-          this.disabled = true;
-        } else if (value == "false" || value == null || value == undefined) {
-          this.disabled = false;
-        }
+        this.disabled = parseBooleanAttribute(value);
         break;
       case 'required':
-        this.required = !!((value || value === '') && value !== 'false');
+        this.required = parseBooleanAttribute(value);
         break;
       case 'message':
         this.elements.message.innerHTML = value;
