@@ -22,7 +22,7 @@ For multiple related choices, render a list of `jb-checkbox` elements with diffe
 
 ## Demo
 
-- [Storybook](https://javadbat.github.io/design-system/?path=/docs/components-form-elements-jbcheckbox)
+- [Demo](https://javadbat.github.io/design-system/?path=/docs/components-form-elements-jbcheckbox)
 
 ## Using With JS Frameworks
 
@@ -58,50 +58,50 @@ Use the label slot when the label needs custom markup:
 
 | name | type | default | description |
 | --- | --- | --- | --- |
-| `value` | `boolean` | `false` | Initial checked value attribute. Use `value="true"` for checked markup; omit the attribute or use the boolean `value` property for false/programmatic updates. |
-| `label` | `string` | `""` | Text label. Use `slot="label"` for custom markup. |
-| `message` | `string` | `""` | Helper text shown below the label when no validation error is visible. |
+| `value` | `boolean` | `false` | Initial checked value attribute. Use `value="true"` for checked markup; omit the attribute or use the boolean `value` property for false/programmatic updates. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--initial-value) |
+| `label` | `string` | `""` | Text label. Use `slot="label"` for custom markup. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--children-label) |
+| `message` | `string` | `""` | Helper text shown below the label when no validation error is visible. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--with-message) |
 | `name` | `string` | `""` | Form field name. |
-| `disabled` | `boolean` | `false` | Disables user toggling and sets the `disabled` custom state. |
-| `required` | `boolean \| string` | `false` | Enables required validation. A string value is used as the required error message. |
-| `error` | `string` | `""` | External validation error message used as a custom error. |
-| `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `md` style defaults | Visual size variant. |
+| `disabled` | `boolean` | `false` | Disables user toggling and sets the `disabled` custom state. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--disabled) |
+| `required` | `boolean \| string` | `false` | Enables required validation. A string value is used as the required error message. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--required) |
+| `error` | `string` | `""` | External validation error message used as a custom error. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--with-error) |
+| `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `md` style defaults | Visual size variant. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--size-variants) |
 
 ### Properties
 
 | name | type | readonly | description |
 | --- | --- | --- | --- |
-| `value` | `boolean` | no | Boolean checked value. The native form value is set to `"true"` or `"false"`. |
-| `checked` | `boolean` | yes | `true` when `value` is `true`. |
-| `disabled` | `boolean` | no | Disables user toggling and updates accessibility/custom state. |
-| `required` | `boolean` | no | Enables required validation. |
-| `validation` | `ValidationHelper<boolean>` | yes | Validation helper from `jb-validation`; set `validation.list` for custom rules. |
+| `value` | `boolean` | no | Boolean checked value. The native form value is set to `"true"` or `"false"`. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--initial-value-does-not-override-value) |
+| `checked` | `boolean` | yes | `true` when `value` is `true`. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--initial-value) |
+| `disabled` | `boolean` | no | Disables user toggling and updates accessibility/custom state. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--disabled) |
+| `required` | `boolean` | no | Enables required validation. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--required) |
+| `validation` | `ValidationHelper<boolean>` | yes | Validation helper from `jb-validation`; set `validation.list` for custom rules. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--imperative-methods) |
 | `name` | `string` | yes | Current `name` attribute value. |
-| `initialValue` | `boolean` | no | Default and reset value. It initializes `value` until the live value is explicitly set. |
-| `isDirty` | `boolean` | yes | `true` when current `value` differs from `initialValue`. |
+| `initialValue` | `boolean` | no | Default and reset value. It initializes `value` until the live value is explicitly set. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--initial-value) |
+| `isDirty` | `boolean` | yes | `true` when current `value` differs from `initialValue`. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--initial-value) |
 | `isAutoValidationDisabled` | `boolean` | no | Compatibility flag for form input standards. |
-| `validationMessage` | `string` | yes | Current native validation message from `ElementInternals`. |
+| `validationMessage` | `string` | yes | Current native validation message from `ElementInternals`. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--imperative-methods) |
 
 ### Methods
 
 | name | returns | description |
 | --- | --- | --- |
-| `checkValidity()` | `boolean` | Runs validation without showing the error message. |
-| `reportValidity()` | `boolean` | Runs validation and shows the first error message. |
-| `focus(options?)` | `void` | Focuses the checkbox control when it is not disabled. |
+| `checkValidity()` | `boolean` | Runs validation without showing the error message. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--imperative-methods) |
+| `reportValidity()` | `boolean` | Runs validation and shows the first error message. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--imperative-methods) |
+| `focus(options?)` | `void` | Focuses the checkbox control when it is not disabled. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--imperative-methods) |
 
 ### Events
 
 | event | detail | description |
 | --- | --- | --- |
-| `before-change` | none | Cancelable event dispatched before toggling. During this event, `event.target.value` exposes the next value. |
-| `change` | none | Cancelable event dispatched after value changes. Prevent default to revert the toggle. |
-| `load` | none | Dispatched from `connectedCallback` before `initProp`. |
-| `init` | none | Dispatched from `connectedCallback` after `initProp`. |
+| `before-change` | none | Cancelable event dispatched before toggling. During this event, `event.target.value` exposes the next value. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--cancelable-events) |
+| `change` | none | Cancelable event dispatched after value changes. Prevent default to revert the toggle. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--cancelable-events) |
+| `load` | none | Dispatched from `connectedCallback` before `initProp`. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--normal) |
+| `init` | none | Dispatched from `connectedCallback` after `initProp`. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--normal) |
 
 ## Get and set value
 
-Use the `value` property for controlled updates.
+Use the `value` property for controlled updates; see the [controlled-value Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--initial-value-does-not-override-value).
 
 ```js
 const checkbox = document.querySelector('jb-checkbox');
@@ -118,6 +118,8 @@ checkbox.addEventListener('change', (event) => {
 
 ## Disable checkbox
 
+Set the `disabled` property to prevent toggling and remove the checkbox from the internal tab order; see the [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--disabled).
+
 ```js
 document.querySelector('jb-checkbox').disabled = true;
 ```
@@ -128,7 +130,7 @@ document.querySelector('jb-checkbox').disabled = true;
 
 ## Validation
 
-`jb-checkbox` uses [`jb-validation`](https://github.com/javadbat/jb-validation). Built-in validation covers `required` and `error`; custom validations can be added with `validation.list`.
+`jb-checkbox` uses [`jb-validation`](https://github.com/javadbat/jb-validation). Built-in validation covers `required` and `error`; custom validations can be added with `validation.list`. See the [imperative validation Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--imperative-methods).
 
 ```js
 const checkbox = document.querySelector('jb-checkbox');
@@ -145,6 +147,8 @@ const isValid = checkbox.reportValidity();
 
 ### Required Validation
 
+Use the `required` attribute to enable built-in validation; see the [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--required).
+
 ```html
 <jb-checkbox required label="Accept terms"></jb-checkbox>
 <jb-checkbox required="Please accept terms" label="Accept terms"></jb-checkbox>
@@ -152,7 +156,7 @@ const isValid = checkbox.reportValidity();
 
 ### External error
 
-Set the `error` attribute when an external validation system owns the error state.
+Set the `error` attribute when an external validation system owns the error state; see the [external-error Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--with-error).
 
 ```html
 <jb-checkbox error="Please accept terms" label="Accept terms"></jb-checkbox>
@@ -160,17 +164,17 @@ Set the `error` attribute when an external validation system owns the error stat
 
 ## Sizes
 
+Supported size values are `xs`, `sm`, `md`, `lg`, and `xl`; see the [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--size-variants).
+
 ```html
 <jb-checkbox size="sm" label="Small checkbox"></jb-checkbox>
 ```
-
-Supported size values are `xs`, `sm`, `md`, `lg`, and `xl`.
 
 ## Slots
 
 | slot | description |
 | --- | --- |
-| `label` | Custom label content rendered next to the checkbox. |
+| `label` | Custom label content rendered next to the checkbox. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--children-label) |
 
 ## CSS parts and states
 
@@ -204,11 +208,11 @@ jb-checkbox:state(invalid)::part(message) {
 
 ## Custom style
 
-For complete styling guidance, live examples, CSS parts, custom states, variables, and copyable style recipes, see [Styling](https://javadbat.github.io/design-system/?path=/docs/components-form-elements-jbcheckbox-styling).
+For complete styling guidance, live examples, CSS parts, custom states, variables, and copyable style recipes, see [Styling](https://javadbat.github.io/design-system/?path=/docs/components-form-elements-jbcheckbox-styling) and the [style gallery Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox-style--gallery).
 
 ## Accessibility notes
 
-- The component uses `ElementInternals.role = "checkbox"` where supported.
+- The component uses `ElementInternals.role = "checkbox"` where supported; inspect the interactive [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--normal).
 - The `label` attribute is exposed as `ariaLabel`.
 - `ariaChecked` is synchronized with the current checked value.
 - `disabled`, `checked`, and `invalid` states are synchronized with `ElementInternals` custom states where supported.

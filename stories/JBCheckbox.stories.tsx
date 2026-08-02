@@ -3,7 +3,7 @@ import { JBButton } from 'jb-button/react';
 import JBCheckboxTest from './JBCheckboxTestPage';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, fn, userEvent, waitFor } from 'storybook/test';
-import type { JBCheckboxWebComponent } from '../dist/jb-checkbox';
+import type { JBCheckboxWebComponent } from 'jb-checkbox';
 import { useRef } from 'react';
 
 const meta = {
@@ -18,6 +18,66 @@ export const Normal: Story = {
   args: {
     label: 'checkbox',
     onChange: (e) => { console.log('onChange', e.target.value); }
+  }
+};
+
+export const ImperativeMethods: Story = {
+  args: {
+    label: 'Accept terms',
+    required: true,
+  },
+  play: async ({ canvasElement }) => {
+    const checkbox = canvasElement.querySelector<JBCheckboxWebComponent>('jb-checkbox');
+    const wrapper = checkbox?.shadowRoot?.querySelector<HTMLElement>('.jb-checkbox-web-component');
+
+    expect(checkbox).toBeTruthy();
+    expect(wrapper).toBeTruthy();
+
+    await waitFor(() => {
+      expect(checkbox?.required).toBe(true);
+      expect(checkbox?.checkValidity()).toBe(false);
+    });
+
+    expect(checkbox?.reportValidity()).toBe(false);
+
+    await userEvent.click(wrapper!);
+
+    expect(checkbox?.value).toBe(true);
+    expect(checkbox?.checkValidity()).toBe(true);
+
+    checkbox?.focus();
+    expect(checkbox?.shadowRoot?.activeElement).toBe(wrapper);
+  }
+};
+
+export const CancelableEvents: Story = {
+  args: {
+    label: 'Accept terms',
+  },
+  play: async ({ canvasElement }) => {
+    const checkbox = canvasElement.querySelector<JBCheckboxWebComponent>('jb-checkbox');
+    const wrapper = checkbox?.shadowRoot?.querySelector<HTMLElement>('.jb-checkbox-web-component');
+    const onBeforeChange = fn((event: Event) => event.preventDefault());
+    const onChange = fn();
+
+    expect(checkbox).toBeTruthy();
+    expect(wrapper).toBeTruthy();
+
+    checkbox?.addEventListener('before-change', onBeforeChange);
+    checkbox?.addEventListener('change', onChange);
+
+    await userEvent.click(wrapper!);
+
+    expect(onBeforeChange).toHaveBeenCalledOnce();
+    expect(onBeforeChange.mock.calls[0][0].cancelable).toBe(true);
+    expect(onChange).not.toHaveBeenCalled();
+    expect(checkbox?.value).toBe(false);
+
+    checkbox?.removeEventListener('before-change', onBeforeChange);
+    await userEvent.click(wrapper!);
+
+    expect(onChange).toHaveBeenCalledOnce();
+    expect(checkbox?.value).toBe(true);
   }
 };
 

@@ -9,7 +9,7 @@ React wrapper for `jb-checkbox`, a form-associated checkbox web component with a
 
 ## Demo
 
-- [Storybook](https://javadbat.github.io/design-system/?path=/docs/components-form-elements-jbcheckbox)
+- [Demo](https://javadbat.github.io/design-system/?path=/docs/components-form-elements-jbcheckbox)
 - [CodeSandbox preview](https://3f63dj.csb.app/samples/jb-checkbox)
 - [CodeSandbox editor](https://codesandbox.io/p/sandbox/jb-design-system-3f63dj?file=%2Fsrc%2Fsamples%2FJBCheckbox.tsx)
 
@@ -37,28 +37,48 @@ Use custom label markup with the `label` slot:
 
 Use `JBCheckbox` for a single boolean option that needs JB Design System styling, validation, form association, disabled state, or custom label markup.
 
-## Props
+## Using With JS Frameworks
+
+This entry point is specifically for React. For Angular, Vue, Nuxt, Svelte, SolidJS, Lit, and other integrations, see [Using With JS Frameworks in the web-component README](../README.md#using-with-js-frameworks).
+
+## API reference
+
+### Props
 
 | prop | type | description |
 | --- | --- | --- |
-| `value` | `boolean` | Controlled checked value. |
-| `label` | `string \| null` | Text label. Use children with `slot="label"` for custom markup. |
+| `value` | `boolean` | Controlled checked value. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--initial-value-does-not-override-value) |
+| `label` | `string \| null` | Text label. Use children with `slot="label"` for custom markup. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--children-label) |
 | `name` | `string` | Form field name. |
-| `message` | `string \| null` | Helper text shown below the label. |
-| `error` | `string \| null` | External validation error message. |
-| `validationList` | `ValidationItem<boolean>[] \| null` | Custom validation rules from `jb-validation`. |
-| `disabled` | `boolean` | Disables user toggling. |
-| `required` | `boolean` | Enables required validation. |
-| `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Visual size variant. |
+| `message` | `string \| null` | Helper text shown below the label. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--with-message) |
+| `error` | `string \| null` | External validation error message. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--with-error) |
+| `validationList` | `ValidationItem<boolean>[] \| null` | Custom validation rules from `jb-validation`. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--imperative-methods) |
+| `disabled` | `boolean` | Disables user toggling. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--disabled) |
+| `required` | `boolean` | Enables required validation. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--required) |
+| `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Visual size variant. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--size-variants) |
 
-## Events
+### Attributes
+
+React consumers should use props instead of setting web-component attributes directly. See the [web-component attributes reference](../README.md#attributes).
+
+### Properties
+
+The wrapper exposes the underlying checkbox properties through a ref, including `checked`, `initialValue`, `isDirty`, and `validationMessage`. See the [web-component properties reference](../README.md#properties).
+
+### Methods
+
+Use a ref for `checkValidity()`, `reportValidity()`, and `focus()`; see the [imperative methods Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--imperative-methods).
+
+### Events
 
 | prop | event | description |
 | --- | --- | --- |
-| `onBeforeChange` | `before-change` | Cancelable event fired before toggling. During this event, `event.target.value` exposes the next value. |
-| `onChange` | `change` | Cancelable event fired after value changes. Prevent default to revert the toggle. |
+| `onBeforeChange` | `before-change` | Cancelable event fired before toggling. During this event, `event.target.value` exposes the next value. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--cancelable-events) |
+| `onChange` | `change` | Cancelable event fired after value changes. Prevent default to revert the toggle. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--cancelable-events) |
 
-## Controlled value
+## Get and set value
+
+Use the `value` prop for controlled updates; see the [controlled-value Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--initial-value-does-not-override-value).
 
 ```jsx
 const [value, setValue] = useState(false);
@@ -72,6 +92,8 @@ const [value, setValue] = useState(false);
 
 ## Disabled
 
+The disabled state prevents toggling and removes the checkbox from the internal tab order; see the [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--disabled).
+
 ```jsx
 <JBCheckbox disabled label="Disabled checkbox" />
 ```
@@ -79,6 +101,8 @@ const [value, setValue] = useState(false);
 Disabled checkboxes cannot be toggled and are removed from the internal tab order.
 
 ## Validation
+
+`required`, `error`, and `validationList` configure validation; see the [required validation Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--required) and [external-error Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--with-error).
 
 ```jsx
 const validationList = [
@@ -102,37 +126,33 @@ const isValid = checkboxRef.current?.reportValidity();
 
 ## Sizes
 
+Supported size values are `xs`, `sm`, `md`, `lg`, and `xl`; see the [size variants Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--size-variants).
+
 ```jsx
 <JBCheckbox size="sm" label="Small checkbox" />
 ```
 
-Supported size values are `xs`, `sm`, `md`, `lg`, and `xl`.
-
 ## Custom style
 
-The React component uses the same CSS variables, CSS parts, and custom states as the web component.
+Styling is shared with the web component. See the [web-component custom style section](../README.md#custom-style) for CSS variables, parts, states, recipes, and the live gallery.
 
-```css
-.terms-checkbox::part(label) {
-  font-weight: 600;
-}
+## Slots
 
-.terms-checkbox:state(checked)::part(label) {
-  color: var(--jb-text-primary);
-}
+Use children with `slot="label"` for custom label markup; see the [custom-label Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--children-label).
 
-.terms-checkbox {
-  --jb-checkbox-focus-ring-color: var(--jb-primary);
-}
-```
+For the complete slot reference, see the [web-component Slots section](../README.md#slots).
 
-```jsx
-<JBCheckbox className="terms-checkbox" label="Accept terms" />
-```
+## CSS parts and states
 
-## Shared Documentation
+CSS parts and `:state(...)` selectors are shared with the web component. See the [web-component CSS parts and states section](../README.md#css-parts-and-states) and its [style gallery Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox-style--gallery).
 
-For web-component behavior, events, slots, CSS variables, and the full API, see [`jb-checkbox`](https://github.com/javadbat/jb-checkbox).
+## Accessibility notes
+
+Accessibility behavior is provided by the underlying web component; inspect the interactive [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--normal) and read the [web-component accessibility notes](../README.md#accessibility-notes).
+
+## Dependencies
+
+The React wrapper uses the underlying `jb-checkbox` and `jb-validation` packages. See the shared [web-component documentation](../README.md#related-docs).
 
 ## Related Docs
 
