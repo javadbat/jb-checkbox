@@ -1,15 +1,15 @@
 jb-checkbox.porcelain-style {
     display: block;
     width: 100%;
-    --jb-checkbox-label-color: var(--jb-text-primary);
+    --jb-checkbox-label-color: var(--jb-content-primary);
     --jb-checkbox-message-color: #60758a;
     --jb-checkbox-message-color-error: #b42318;
-    --jb-checkbox-check-bg-color: var(--jb-surface);
+    --jb-checkbox-check-bg-color: var(--jb-surface-primary);
     --jb-checkbox-check-bg-color-checked: var(--jb-focus-color);
     --jb-checkbox-check-bg-color-disabled: #dcebf7;
     --jb-checkbox-check-border-color: #8eb4d0;
     --jb-checkbox-check-mark-color: transparent;
-    --jb-checkbox-check-mark-color-checked: var(--jb-surface);
+    --jb-checkbox-check-mark-color-checked: var(--jb-surface-primary);
     --jb-checkbox-focus-ring-color: var(--jb-focus-color);
 }
 

@@ -1,8 +1,8 @@
 jb-checkbox.sunset-style {
     display: block;
     width: 100%;
-    --jb-checkbox-label-color: var(--jb-text-primary);
-    --jb-checkbox-message-color: var(--jb-text-secondary);
+    --jb-checkbox-label-color: var(--jb-content-primary);
+    --jb-checkbox-message-color: var(--jb-content-secondary);
     --jb-checkbox-message-color-error: #b42318;
     --jb-checkbox-check-bg-color: #fff4e8;
     --jb-checkbox-check-bg-color-checked: var(--jb-primary);

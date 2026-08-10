@@ -1,15 +1,15 @@
 jb-checkbox.bootstrap-style {
     display: block;
     width: 100%;
-    --jb-checkbox-label-color: var(--jb-text-primary);
+    --jb-checkbox-label-color: var(--jb-content-primary);
     --jb-checkbox-message-color: #6c757d;
     --jb-checkbox-message-color-error: #dc3545;
-    --jb-checkbox-check-bg-color: var(--jb-surface);
+    --jb-checkbox-check-bg-color: var(--jb-surface-primary);
     --jb-checkbox-check-bg-color-checked: var(--jb-focus-color);
     --jb-checkbox-check-bg-color-disabled: var(--jb-surface-hover);
     --jb-checkbox-check-border-color: var(--jb-text-disabled);
     --jb-checkbox-check-mark-color: transparent;
-    --jb-checkbox-check-mark-color-checked: var(--jb-surface);
+    --jb-checkbox-check-mark-color-checked: var(--jb-surface-primary);
     --jb-checkbox-check-border-radius: 0.25rem;
     --jb-checkbox-check-border-radius-checked: 0.25rem;
     --jb-checkbox-focus-ring-color: oklch(55% 0.19 255 / 0.45);

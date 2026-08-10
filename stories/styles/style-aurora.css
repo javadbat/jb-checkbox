@@ -4,8 +4,8 @@ jb-checkbox.aurora-style {
     --jb-checkbox-size: 1.25rem;
     --jb-checkbox-label-font-size: 0.875rem;
     --jb-checkbox-message-font-size: 0.75rem;
-    --jb-checkbox-label-color: var(--jb-text-primary);
-    --jb-checkbox-message-color: var(--jb-text-secondary);
+    --jb-checkbox-label-color: var(--jb-content-primary);
+    --jb-checkbox-message-color: var(--jb-content-secondary);
     --jb-checkbox-message-color-error: #ff8ab3;
     --jb-checkbox-check-bg-color: #111827;
     --jb-checkbox-check-bg-color-checked: var(--jb-primary);
@@ -14,7 +14,7 @@ jb-checkbox.aurora-style {
     --jb-checkbox-check-border-radius: 0.375rem;
     --jb-checkbox-check-border-radius-checked: 0.375rem;
     --jb-checkbox-check-mark-color: transparent;
-    --jb-checkbox-check-mark-color-checked: var(--jb-text-inverse);
+    --jb-checkbox-check-mark-color-checked: var(--jb-content-inverse);
     --jb-checkbox-focus-ring-color: var(--jb-focus-color);
 }
 
