@@ -7,10 +7,10 @@
   --check-border-radius-checked: var(--jb-checkbox-check-border-radius-checked, 3.625rem);
   /* Theme/Color */
   --label-color:var(--jb-checkbox-label-color, var(--jb-neutral-5));
-  --message-color:var(--jb-checkbox-message-color, var(--jb-text-secondary));
-  --check-bg-color:var(--jb-checkbox-check-bg-color, var(--jb-white));
+  --message-color:var(--jb-checkbox-message-color, var(--jb-content-secondary));
+  --check-bg-color:var(--jb-checkbox-check-bg-color, var(--jb-surface-primary));
   --check-border-color:var(--jb-checkbox-check-border-color, var(--jb-neutral-7));
-  --check-mark-color:var(--jb-checkbox-check-mark-color, var(--jb-text-inverse));
+  --check-mark-color:var(--jb-checkbox-check-mark-color, var(--jb-content-inverse));
   --focus-ring-color: var(--jb-checkbox-focus-ring-color, Highlight);
   /* Other */
   --message-box-display: var(--jb-checkbox-message-box-display, block);
@@ -19,9 +19,9 @@
   --message-color:var(--jb-checkbox-message-color-error, var(--jb-red));
 }
 :host(:state(checked)){
-  --label-color:var(--jb-checkbox-label-color, var(--jb-text-primary));
+  --label-color:var(--jb-checkbox-label-color, var(--jb-content-primary));
   --check-bg-color:var(--jb-checkbox-check-bg-color-checked, var(--jb-green));
-  --check-mark-color:var(--jb-checkbox-check-mark-color-checked, var(--jb-white));
+  --check-mark-color:var(--jb-checkbox-check-mark-color-checked, var(--jb-content-inverse));
 }
 :host(:state(disabled)){
   --check-bg-color:var(--jb-checkbox-check-bg-color-disabled, var(--jb-neutral-9));
