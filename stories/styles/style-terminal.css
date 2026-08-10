@@ -9,7 +9,7 @@ jb-checkbox.terminal-style {
     --jb-checkbox-check-bg-color-disabled: var(--jb-surface-hover);
     --jb-checkbox-check-border-color: var(--jb-text-disabled);
     --jb-checkbox-check-mark-color: transparent;
-    --jb-checkbox-check-mark-color-checked: var(--jb-text-contrast);
+    --jb-checkbox-check-mark-color-checked: var(--jb-text-inverse);
     --jb-checkbox-check-border-radius: 0.25rem;
     --jb-checkbox-check-border-radius-checked: 0.25rem;
     --jb-checkbox-focus-ring-color: var(--jb-success);
