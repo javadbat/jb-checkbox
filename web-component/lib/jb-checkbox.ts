@@ -1,3 +1,4 @@
+import { defineWebComponent, JBBaseComponent, parseBooleanAttribute } from "jb-core";
 import { renderHTML } from './render';
 import CSS from './jb-checkbox.css';
 import VariablesCSS from './variables.css';
@@ -8,10 +9,9 @@ import type { ElementsObject, ValidationValue } from './types.js';
 import { registerDefaultVariables } from 'jb-core/theme';
 import { dictionary } from './i18n';
 import { i18n } from 'jb-core/i18n';
-import { parseBooleanAttribute } from 'jb-core';
 export * from './types.js';
 
-export class JBCheckboxWebComponent extends HTMLElement implements WithValidation, JBFormInputStandards<boolean> {
+export class JBCheckboxWebComponent extends JBBaseComponent implements WithValidation, JBFormInputStandards<boolean> {
   static get formAssociated() { return true; }
   #value = false;
   #isDirty = false;
@@ -346,7 +346,4 @@ export class JBCheckboxWebComponent extends HTMLElement implements WithValidatio
     return this.#validation.checkValiditySync({ showError: true }).isAllValid;
   }
 }
-const myElementNotExists = !customElements.get('jb-checkbox');
-if (myElementNotExists) {
-  window.customElements.define('jb-checkbox', JBCheckboxWebComponent);
-}
+defineWebComponent('jb-checkbox', JBCheckboxWebComponent);
