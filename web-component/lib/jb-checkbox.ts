@@ -347,3 +347,9 @@ export class JBCheckboxWebComponent extends JBBaseComponent implements WithValid
   }
 }
 defineWebComponent('jb-checkbox', JBCheckboxWebComponent);
+
+declare global {
+  interface HTMLElementTagNameMap {
+    "jb-checkbox": JBCheckboxWebComponent;
+  }
+}
