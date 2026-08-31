@@ -56,6 +56,8 @@ This entry point is specifically for React. For Angular, Vue, Nuxt, Svelte, Soli
 | `disabled` | `boolean` | Disables user toggling. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--disabled) |
 | `required` | `boolean` | Enables required validation. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--required) |
 | `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Visual size variant. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--size-variants) |
+| `variant` | `'solid' \| 'outline' \| 'filled-outline'` | Visual style variant. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--variants) |
+| `color` | `'primary' \| 'secondary' \| 'positive' \| 'danger' \| 'warning' \| 'light' \| 'dark'` | Semantic color variant. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--variants) |
 
 ### Attributes
 
@@ -130,6 +132,16 @@ Supported size values are `xs`, `sm`, `md`, `lg`, and `xl`; see the [size varian
 
 ```jsx
 <JBCheckbox size="sm" label="Small checkbox" />
+```
+
+## Variants
+
+Use `variant` to select `solid`, `outline`, or `filled-outline`, and use `color` to select a semantic color. See every style, color, checked, and disabled combination in the [Variants Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--variants).
+
+```jsx
+<JBCheckbox variant="solid" color="positive" label="Approved" />
+<JBCheckbox variant="outline" color="danger" label="Remove item" />
+<JBCheckbox variant="filled-outline" color="secondary" label="Optional" />
 ```
 
 ## Custom style

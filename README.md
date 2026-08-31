@@ -66,6 +66,8 @@ Use the label slot when the label needs custom markup:
 | `required` | `boolean \| string` | `false` | Enables required validation. A string value is used as the required error message. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--required) |
 | `error` | `string` | `""` | External validation error message used as a custom error. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--with-error) |
 | `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `md` style defaults | Visual size variant. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--size-variants) |
+| `variant` | `'solid' \| 'outline' \| 'filled-outline'` | `solid` | Visual style variant. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--variants) |
+| `color` | `'primary' \| 'secondary' \| 'positive' \| 'danger' \| 'warning' \| 'light' \| 'dark'` | `primary` | Semantic color variant. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--variants) |
 
 ### Properties
 
@@ -169,6 +171,18 @@ Supported size values are `xs`, `sm`, `md`, `lg`, and `xl`; see the [Demo](https
 ```html
 <jb-checkbox size="sm" label="Small checkbox"></jb-checkbox>
 ```
+
+## Variants
+
+Use `variant` to select `solid`, `outline`, or `filled-outline`, and use `color` to select a semantic color. See every style, color, checked, and disabled combination in the [Variants Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--variants).
+
+```html
+<jb-checkbox variant="solid" color="positive" label="Approved"></jb-checkbox>
+<jb-checkbox variant="outline" color="danger" label="Remove item"></jb-checkbox>
+<jb-checkbox variant="filled-outline" color="secondary" label="Optional"></jb-checkbox>
+```
+
+The selected color defines the component's base color. Checked and disabled states derive their background, border, and check-mark colors from that base while retaining the public CSS-variable overrides.
 
 ## Slots
 

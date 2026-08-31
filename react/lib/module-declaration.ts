@@ -1,4 +1,4 @@
-import type { JBCheckboxWebComponent } from 'jb-checkbox';
+import type { ColorVariants, JBCheckboxWebComponent } from 'jb-checkbox';
 
 declare module "react" {
   namespace JSX {
@@ -11,6 +11,7 @@ declare module "react" {
       label?: string | null,
       value?: boolean,
       initialValue?: boolean,
+      color?: ColorVariants,
     }
   }
 }

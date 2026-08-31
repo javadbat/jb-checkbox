@@ -71,6 +71,20 @@
               "type": {
                 "text": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
               }
+            },
+            {
+              "name": "variant",
+              "description": "Visual style variant used by CSS.",
+              "type": {
+                "text": "'solid' | 'outline' | 'filled-outline'"
+              }
+            },
+            {
+              "name": "color",
+              "description": "Semantic color variant used to calculate the component base color.",
+              "type": {
+                "text": "'primary' | 'secondary' | 'positive' | 'danger' | 'warning' | 'light' | 'dark'"
+              }
             }
           ],
           "members": [
@@ -264,6 +278,42 @@
           ],
           "cssProperties": [
             {
+              "name": "--jb-checkbox-base-color",
+              "description": "Base color used to derive checked, variant, and state colors."
+            },
+            {
+              "name": "--jb-checkbox-primary",
+              "description": "Base color for color=\"primary\"."
+            },
+            {
+              "name": "--jb-checkbox-secondary",
+              "description": "Base color for color=\"secondary\"."
+            },
+            {
+              "name": "--jb-checkbox-positive",
+              "description": "Base color for color=\"positive\"."
+            },
+            {
+              "name": "--jb-checkbox-danger",
+              "description": "Base color for color=\"danger\"."
+            },
+            {
+              "name": "--jb-checkbox-warning",
+              "description": "Base color for color=\"warning\"."
+            },
+            {
+              "name": "--jb-checkbox-light",
+              "description": "Base color for color=\"light\"."
+            },
+            {
+              "name": "--jb-checkbox-dark",
+              "description": "Base color for color=\"dark\"."
+            },
+            {
+              "name": "--jb-checkbox-disabled",
+              "description": "Base color while disabled."
+            },
+            {
               "name": "--jb-checkbox-size",
               "description": "Base checkbox size."
             },
@@ -360,8 +410,20 @@
               "description": "Checkbox background color when disabled."
             },
             {
+              "name": "--jb-checkbox-check-bg-color-disabled-unchecked",
+              "description": "Checkbox background color while disabled and unchecked."
+            },
+            {
+              "name": "--jb-checkbox-check-bg-color-disabled-checked",
+              "description": "Checkbox background color while disabled and checked."
+            },
+            {
               "name": "--jb-checkbox-check-border-color",
               "description": "Checkbox border color."
+            },
+            {
+              "name": "--jb-checkbox-check-border-color-disabled",
+              "description": "Checkbox border color while disabled."
             },
             {
               "name": "--jb-checkbox-check-mark-color",
@@ -370,6 +432,10 @@
             {
               "name": "--jb-checkbox-check-mark-color-checked",
               "description": "Check mark color when checked."
+            },
+            {
+              "name": "--jb-checkbox-check-mark-color-disabled-checked",
+              "description": "Check mark color while disabled and checked."
             },
             {
               "name": "--jb-checkbox-focus-ring-color",

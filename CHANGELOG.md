@@ -1,11 +1,18 @@
 # Changelog
 
-## Unreleased
+## [2.0.0] - 2026-08-31
+
+### Added
+
+- Added `solid`, `outline`, and `filled-outline` style variants and semantic `primary`, `secondary`, `positive`, `danger`, `warning`, `light`, and `dark` color variants to the web component and React wrapper.
+- Added a Storybook variants matrix covering every style and color in checked, unchecked, disabled-checked, and disabled-unchecked states.
+- Documented the variant APIs and their public custom-element metadata.
 
 ### Changed
 
 - Made custom-element module evaluation SSR-safe by extending `JBBaseComponent` where needed and registering elements through the shared `defineWebComponent()` helper; raised the minimum `jb-core` version to `0.35.0`.
 - Updated component color defaults to use the shared semantic content and surface tokens.
+- Derived variant and disabled-state colors from a shared base color, with separate checked and unchecked disabled overrides.
 
 ## [1.5.0] - 2026-07-30
 

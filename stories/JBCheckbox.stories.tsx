@@ -3,7 +3,7 @@ import { JBButton } from 'jb-button/react';
 import JBCheckboxTest from './JBCheckboxTestPage';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, fn, userEvent, waitFor } from 'storybook/test';
-import type { JBCheckboxWebComponent } from 'jb-checkbox';
+import type { ColorVariants, JBCheckboxWebComponent, StyleVariants } from 'jb-checkbox';
 import { useRef } from 'react';
 
 const meta = {
@@ -12,6 +12,15 @@ const meta = {
 } satisfies Meta<typeof JBCheckbox>;
 export default meta;
 type Story = StoryObj<typeof meta>;
+
+const colorVariants: ColorVariants[] = ['primary', 'secondary', 'positive', 'danger', 'warning', 'light', 'dark'];
+const styleVariants: StyleVariants[] = ['solid', 'outline', 'filled-outline'];
+const checkboxStates = [
+  { label: 'Unchecked', value: false, disabled: false },
+  { label: 'Checked', value: true, disabled: false },
+  { label: 'Disabled unchecked', value: false, disabled: true },
+  { label: 'Disabled checked', value: true, disabled: true },
+] as const;
 
 
 export const Normal: Story = {
@@ -249,6 +258,42 @@ export const FilledOutline: Story = {
     label:'Label',
     onChange: (e) => { console.log('onChange', e.target.value); }
   }
+};
+export const Variants: Story = {
+  render: () => (
+    <div style={{ display: 'grid', gap: '2rem' }}>
+      {styleVariants.map((variant) => (
+        <section key={variant}>
+          <h3 style={{ marginBlock: '0 1rem', textTransform: 'capitalize' }}>{variant}</h3>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'minmax(7rem, auto) repeat(4, minmax(10rem, 1fr))',
+              gap: '1rem',
+              alignItems: 'center',
+              overflowX: 'auto',
+            }}
+          >
+            <strong>Color</strong>
+            {checkboxStates.map((state) => <strong key={state.label}>{state.label}</strong>)}
+            {colorVariants.flatMap((color) => [
+              <strong key={`${variant}-${color}-label`} style={{ textTransform: 'capitalize' }}>{color}</strong>,
+              ...checkboxStates.map((state) => (
+                <JBCheckbox
+                  key={`${variant}-${color}-${state.label}`}
+                  variant={variant}
+                  color={color}
+                  label="Checkbox"
+                  value={state.value}
+                  disabled={state.disabled}
+                />
+              )),
+            ])}
+          </div>
+        </section>
+      ))}
+    </div>
+  ),
 };
 export const ChildrenLabel: Story = {
   args: {
