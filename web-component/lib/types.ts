@@ -11,3 +11,5 @@ export type ElementsObject = {
 export type ValidationValue = boolean;
 export type JBCheckboxEventType<TEvent> = EventTypeWithTarget<TEvent,JBCheckboxWebComponent>;
 export type SizeVariants = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type ColorVariants = 'primary' | 'secondary' | 'positive' | 'danger'| 'warning'| 'light' | 'dark';
+export type StyleVariants = 'solid' | 'outline' | 'filled-outline';

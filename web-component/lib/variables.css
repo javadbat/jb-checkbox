@@ -3,13 +3,13 @@
   --size:var(--jb-checkbox-size, 2rem);
   --label-font-size: var(--jb-checkbox-label-font-size, 1rem);
   --message-font-size: var(--jb-checkbox-message-font-size, 0.7rem);
-  --check-border-radius: var(--jb-checkbox-check-border-radius, 5px);
-  --check-border-radius-checked: var(--jb-checkbox-check-border-radius-checked, 3.625rem);
+  --check-border-radius: var(--jb-checkbox-check-border-radius, var(--jb-radius));
+  --check-border-radius-checked: var(--jb-checkbox-check-border-radius-checked, 100%);
   /* Theme/Color */
   --label-color:var(--jb-checkbox-label-color, var(--jb-neutral-5));
   --message-color:var(--jb-checkbox-message-color, var(--jb-content-secondary));
-  --check-bg-color:var(--jb-checkbox-check-bg-color, var(--jb-surface-primary));
-  --check-border-color:var(--jb-checkbox-check-border-color, var(--jb-neutral-7));
+  --check-bg-color:var(--jb-checkbox-check-bg-color, var(--jb-surface-secondary));
+  --check-border-color:var(--jb-checkbox-check-border-color, transparent);
   --check-mark-color:var(--jb-checkbox-check-mark-color, var(--jb-content-inverse));
   --focus-ring-color: var(--jb-checkbox-focus-ring-color, Highlight);
   /* Other */
@@ -20,7 +20,7 @@
 }
 :host(:state(checked)){
   --label-color:var(--jb-checkbox-label-color, var(--jb-content-primary));
-  --check-bg-color:var(--jb-checkbox-check-bg-color-checked, var(--jb-green));
+  --check-bg-color:var(--jb-checkbox-check-bg-color-checked, var(--jb-primary));
   --check-mark-color:var(--jb-checkbox-check-mark-color-checked, var(--jb-content-inverse));
 }
 :host(:state(disabled)){
@@ -48,5 +48,17 @@
 :host([size="xl"]){
   --size: var(--jb-checkbox-size-xl, 3rem);
   --label-font-size: var(--jb-checkbox-label-font-size-xl, 1.5rem);
-    --message-font-size: var(--jb-checkbox-message-font-size-xl, 0.875rem);
+  --message-font-size: var(--jb-checkbox-message-font-size-xl, 0.875rem);
+}
+:host([variant="outline"]),:host([variant="filled-outline"]){
+  --check-bg-color:var(--jb-checkbox-check-bg-color, var(--jb-surface-primary));
+  --check-border-color:var(--jb-checkbox-check-border-color, var(--jb-primary));
+}
+:host([variant="outline"]:state(checked)) {
+  --check-bg-color:var(--jb-checkbox-check-bg-color-checked, var(--jb-surface-primary));
+  --check-mark-color:var(--jb-checkbox-check-mark-color-checked, var(--jb-primary));
+}
+:host([variant="filled-outline"]:state(checked)) {
+  --check-bg-color:var(--jb-checkbox-check-bg-color-checked, var(--jb-primary));
+  --check-mark-color:var(--jb-checkbox-check-mark-color-checked, var(--jb-content-inverse));
 }

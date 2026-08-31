@@ -235,10 +235,21 @@ export const DisabledTrue: Story = {
     label: 'disabled with true value',
     value: true,
     disabled: true,
+  }
+};
+export const Outlined: Story = {
+  args: {
+    variant: 'outline',
+    label:'Label',
+  }
+};
+export const FilledOutline: Story = {
+  args: {
+    variant: 'filled-outline',
+    label:'Label',
     onChange: (e) => { console.log('onChange', e.target.value); }
   }
 };
-
 export const ChildrenLabel: Story = {
   args: {
     children: <div style={{ color: 'blue' }} slot="label">label in children</div>,

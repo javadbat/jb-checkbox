@@ -2,7 +2,7 @@
 // biome-ignore lint/correctness/noUnusedImports: React is required by the configured JSX transform.
 import React, { useRef, useImperativeHandle, type PropsWithChildren, type ForwardedRef, } from 'react';
 import 'jb-checkbox';
-import type { JBCheckboxWebComponent, SizeVariants } from 'jb-checkbox';
+import type { ColorVariants, JBCheckboxWebComponent, SizeVariants, StyleVariants } from 'jb-checkbox';
 import { type EventProps, useEvents } from './events-hook.js';
 import { useJBCheckboxAttribute, type JBCheckboxAttributes } from './attributes-hook.js';
 import type { JBElementStandardProps } from 'jb-core/react';
@@ -33,6 +33,8 @@ JBCheckbox.displayName = "JBCheckbox";
 type JBCheckboxProps = {
   label?: string | null,
   size?: SizeVariants,
+  color?: ColorVariants,
+  variant?: StyleVariants,
   value?: boolean | null,
   initialValue?: boolean | null,
   ref?: ForwardedRef<JBCheckboxWebComponent|null|undefined>
