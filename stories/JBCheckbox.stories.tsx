@@ -157,6 +157,11 @@ export const InitialValue: Story = {
     expect(checkbox?.value).toBe(false);
     expect(checkbox?.checked).toBe(false);
     expect(checkbox?.isDirty).toBe(false);
+
+    checkbox!.checked = true;
+    expect(checkbox?.value).toBe(true);
+    expect(checkbox?.checked).toBe(true);
+    expect(checkbox?.isDirty).toBe(true);
   },
 };
 

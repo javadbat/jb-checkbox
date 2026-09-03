@@ -99,11 +99,10 @@
             {
               "kind": "field",
               "name": "checked",
-              "description": "Alias-style readonly checked state derived from value.",
+              "description": "Native-style checked state synchronized with the canonical boolean value.",
               "type": {
                 "text": "boolean"
-              },
-              "readonly": true
+              }
             },
             {
               "kind": "field",
@@ -184,6 +183,10 @@
             }
           ],
           "methods": [
+            {
+              "name": "reset",
+              "description": "Restores initialValue and clears displayed validation."
+            },
             {
               "name": "checkValidity",
               "description": "Runs validation without showing the error message.",

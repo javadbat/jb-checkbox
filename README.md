@@ -74,7 +74,7 @@ Use the label slot when the label needs custom markup:
 | name | type | readonly | description |
 | --- | --- | --- | --- |
 | `value` | `boolean` | no | Boolean checked value. The native form value is set to `"true"` or `"false"`. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--initial-value-does-not-override-value) |
-| `checked` | `boolean` | yes | `true` when `value` is `true`. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--initial-value) |
+| `checked` | `boolean` | no | Native-style checked state synchronized with canonical boolean `value`. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--initial-value) |
 | `disabled` | `boolean` | no | Disables user toggling and updates accessibility/custom state. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--disabled) |
 | `required` | `boolean` | no | Enables required validation. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--required) |
 | `validation` | `ValidationHelper<boolean>` | yes | Validation helper from `jb-validation`; set `validation.list` for custom rules. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--imperative-methods) |
@@ -90,6 +90,7 @@ Use the label slot when the label needs custom markup:
 | --- | --- | --- |
 | `checkValidity()` | `boolean` | Runs validation without showing the error message. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--imperative-methods) |
 | `reportValidity()` | `boolean` | Runs validation and shows the first error message. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--imperative-methods) |
+| `reset()` | `void` | Restores `initialValue` and clears displayed validation. |
 | `focus(options?)` | `void` | Focuses the checkbox control when it is not disabled. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--imperative-methods) |
 
 ### Events

@@ -10,8 +10,9 @@ import './module-declaration.js';
 
 export function JBCheckbox(props: Props) {
   //otherProps contain size
-  const { ref, disabled, error, initialValue, message, name, required, validationList, value, children, onBeforeChange, onChange, ...otherProps } = props
-  const valueProps = value === undefined ? {} : { value: value ?? false };
+  const { ref, checked, disabled, error, initialValue, message, name, required, validationList, value, children, onBeforeChange, onChange, ...otherProps } = props
+  const controlledValue = value !== undefined ? value : checked;
+  const valueProps = controlledValue === undefined ? {} : { value: controlledValue ?? false };
   const element = useRef<JBCheckboxWebComponent>(null);
   // biome-ignore lint/correctness/useExhaustiveDependencies: <it's needed>
   useImperativeHandle(
@@ -36,6 +37,7 @@ type JBCheckboxProps = {
   color?: ColorVariants,
   variant?: StyleVariants,
   value?: boolean | null,
+  checked?: boolean | null,
   initialValue?: boolean | null,
   ref?: ForwardedRef<JBCheckboxWebComponent|null|undefined>
 }

@@ -48,6 +48,7 @@ This entry point is specifically for React. For Angular, Vue, Nuxt, Svelte, Soli
 | prop | type | description |
 | --- | --- | --- |
 | `value` | `boolean` | Controlled checked value. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--initial-value-does-not-override-value) |
+| `checked` | `boolean` | Native-style controlled checked state. When both are supplied, canonical `value` takes precedence. |
 | `label` | `string \| null` | Text label. Use children with `slot="label"` for custom markup. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--children-label) |
 | `name` | `string` | Form field name. |
 | `message` | `string \| null` | Helper text shown below the label. [Demo](https://javadbat.github.io/design-system/?path=/story/components-form-elements-jbcheckbox--with-message) |
@@ -65,7 +66,7 @@ React consumers should use props instead of setting web-component attributes dir
 
 ### Properties
 
-The wrapper exposes the underlying checkbox properties through a ref, including `checked`, `initialValue`, `isDirty`, and `validationMessage`. See the [web-component properties reference](../README.md#properties).
+The wrapper accepts either canonical `value` or native-style `checked` and exposes the underlying checkbox properties through a ref, including writable `checked`, `initialValue`, `isDirty`, and `validationMessage`. See the [web-component properties reference](../README.md#properties).
 
 ### Methods
 

@@ -29,7 +29,7 @@ export class JBCheckboxWebComponent extends JBBaseComponent implements WithValid
   }
   set value(value: boolean) {
     this.#isDirty = true;
-    this.#setValue(value);
+    value ? this.#setValue(true) : this.#clearValue();
   }
   #setValue(value: boolean) {
     if (this.#value !== value) {
@@ -43,14 +43,23 @@ export class JBCheckboxWebComponent extends JBBaseComponent implements WithValid
       } else {
         this.#internals.states?.delete("checked");
       }
-      if (typeof this.#internals.setFormValue == "function") {
-        this.#internals.setFormValue(`${value}`);
-      }
+      this.#updateFormValue();
     }
 
   }
+  #clearValue() {
+    this.#setValue(false);
+  }
+  #updateFormValue() {
+    if (this.#internals && typeof this.#internals.setFormValue == "function") {
+      this.#internals.setFormValue(`${this.#value}`);
+    }
+  }
   get checked() {
     return this.value === true;
+  }
+  set checked(value: boolean) {
+    this.value = Boolean(value);
   }
   #validation = new ValidationHelper({
     getValue: () => (this.value),
@@ -86,11 +95,14 @@ export class JBCheckboxWebComponent extends JBBaseComponent implements WithValid
       this.#setValue(this.#initialValue);
     }
   }
-  formResetCallback() {
+  reset() {
     this.#isDirty = false;
     this.#setValue(this.initialValue);
     this.#validation.reset();
     this.#internals?.setValidity({}, '');
+  }
+  formResetCallback() {
+    this.reset();
   }
   get isDirty(): boolean {
     return this.#value !== this.initialValue;
@@ -337,6 +349,9 @@ export class JBCheckboxWebComponent extends JBBaseComponent implements WithValid
   }
   get validationMessage() {
     return this.#internals!.validationMessage;
+  }
+  get validity() {
+    return this.#internals?.validity;
   }
 
   checkValidity() {

@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.1.0] - 2026-09-03
+
+### Added
+
+- Added the standard public `reset()` method; native form reset delegates to the same behavior.
+
+### Changed
+
+- Standardized private empty-value and form synchronization helpers as `#clearValue()` and `#updateFormValue()`.
+- Made `checked` writable and synchronized it with canonical boolean `value`; the React wrapper now accepts `checked`, with `value` taking precedence when both are supplied.
+
 ## [2.0.0] - 2026-08-31
 
 ### Added
