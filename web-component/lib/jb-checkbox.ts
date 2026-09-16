@@ -153,7 +153,6 @@ export class JBCheckboxWebComponent extends JBBaseComponent implements WithValid
     this.callOnLoadEvent();
     this.initProp();
     this.callOnInitEvent();
-
   }
   callOnLoadEvent(): void {
     const event = new CustomEvent('load', { bubbles: true, composed: false });
