@@ -59,7 +59,8 @@
         grid-area: check;
         display: block;
         border-radius: var(--check-border-radius);
-        
+        corner-shape: var(--box-corner-shape);
+        box-shadow: var(--box-shadow);
         .check-box-svg {
             width: 100%;
             height: 100%;

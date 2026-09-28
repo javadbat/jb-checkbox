@@ -18,6 +18,8 @@
   --focus-ring-color: var(--jb-checkbox-focus-ring-color, Highlight);
   /* Other */
   --message-box-display: var(--jb-checkbox-message-box-display, block);
+  --box-shadow: var(--jb-checkbox-box-shadow, var(--jb-control-shadow));
+  --box-corner-shape: var(--jb-checkbox-corner-shape, var(--jb-corner-shape));
 }
 :host(:state(invalid)){
   --message-color:var(--jb-checkbox-message-color-error, var(--jb-red));
